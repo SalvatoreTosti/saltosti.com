@@ -10,169 +10,164 @@
     <script type="application/x-scittle">
       (require '[reagent.dom :as rdom])
 
-      (defn nav-bar []
-       [:nav {:class "relative flex flex-wrap items-center justify-between px-2 py-3 bg-blue-500 mb-3"}
-        [:div {:class "container px-4 mx-auto flex flex-wrap items-center justify-between"}
-         [:div {:class "relative flex justify-between w-auto px-4 static block justify-start"}
-          [:a {:class "text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white" :href "#"}
-           "Salvatore"]]
-         [:div {:class "flex flex-grow items-center"}
-          [:ul {:class "flex flex-row list-none ml-auto"}
-           [:li {:class "nav-item"}
-            [:a {:class "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                 :href "https://github.com/SalvatoreTosti"
-                 :target "_"}
-             [:i {:class "fab fa-github text-lg leading-lg text-white opacity-75"}]]]
-           [:li {:class "nav-item"}
-            [:a {:class "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                 :href "https://www.linkedin.com/in/saltosti/"
-                 :target "_"}
-             [:i {:class "fab fa-linkedin-in text-lg leading-lg text-white opacity-75"}]]]]]]])
+      (defn nav-bar
+        []
+        [:nav {:class "relative flex flex-wrap items-center justify-between px-2 py-3 bg-blue-500 mb-3"}
+         [:div {:class "container px-4 mx-auto flex flex-wrap items-center justify-between"}
+          [:div {:class "relative flex justify-between w-auto px-4 static block justify-start"}
+           [:a {:class "text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white" :href "#"}
+            "Salvatore"]]
+          [:div {:class "flex flex-grow items-center"}
+           [:ul {:class "flex flex-row list-none ml-auto"}
+            [:li {:class "nav-item"}
+             [:a {:class "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  :href "https://github.com/SalvatoreTosti"
+                  :target "_"}
+              [:i {:class "fab fa-github text-lg leading-lg text-white opacity-75"}]]]
+            [:li {:class "nav-item"}
+             [:a {:class "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  :href "https://www.linkedin.com/in/saltosti/"
+                  :target "_"}
+              [:i {:class "fab fa-linkedin-in text-lg leading-lg text-white opacity-75"}]]]]]]])
+
 
       (def technologies
-       {
-        :clojure {:title "Clojure" :link "https://clojure.org/"}
-        :quil {:title "quil" :link "http://www.quil.info/"}
-        :python {:title "Python" :link "https://www.python.org/"}
-        :beautiful-soup {:title "Beautiful Soup" :link "https://beautiful-soup-4.readthedocs.io/en/latest/#"}
-        :bootstrap {:title "Bootstrap" :link "https://getbootstrap.com/"}
-        :javascript {:title "Javascript" :link "https://www.javascript.com/"}
-        :jquery {:title "JQuery" :link "https://jquery.com/"}
-        :flask {:title "Flask" :link "https://flask.palletsprojects.com/en/2.0.x/"}
-        :socket-io {:title "socket.io" :link "https://socket.io/"}
-       })
+        {:clojure {:title "Clojure" :link "https://clojure.org/"}
+         :quil {:title "quil" :link "http://www.quil.info/"}
+         :python {:title "Python" :link "https://www.python.org/"}
+         :beautiful-soup {:title "Beautiful Soup" :link "https://beautiful-soup-4.readthedocs.io/en/latest/#"}
+         :bootstrap {:title "Bootstrap" :link "https://getbootstrap.com/"}
+         :javascript {:title "Javascript" :link "https://www.javascript.com/"}
+         :jquery {:title "JQuery" :link "https://jquery.com/"}
+         :flask {:title "Flask" :link "https://flask.palletsprojects.com/en/2.0.x/"}
+         :socket-io {:title "socket.io" :link "https://socket.io/"}})
 
 
-        (def project-data
-         [{:title "Circle of Competence"
-           :link "https://github.com/atosti/coc"
-           :img-link "https://s3.amazonaws.com/www.saltosti.com/img/coc-example.png"
-           :img-alt "coc program running in a terminal"
-           :one-liner "CLI tool for stock ticker analysis"
-           :description [:div "Scrapes data from financial websites and then performs algorithmic analysis to determine overall 'health' of a stock.
-            Cooperative project with " [:a {:class "hover:opacity-75" :href "https://github.com/atosti" :target "_"} "atosti"] "."]
-           :technologies [(:python technologies) (:beautiful-soup technologies)]
-          }
-          {:title "tetris-clj"
-           :link "https://github.com/SalvatoreTosti/tetris-clj"
-           :img-link "https://raw.githubusercontent.com/SalvatoreTosti/tetris-clj/master/doc/tetris-2.png"
-           :img-alt "Tetris game written in Clojure"
-           :one-liner "Tetris in Clojure!"
-           :description [:div "Built to demonstrate game development using functional principles.
-        Uses quil for graphics / input handling.
-        Graphics by " [:a {:class "hover:opacity-75" :href "https://www.kenney.nl/assets/bit-pack" :target "_"} "Kenny.nl"] "."]
-           :technologies [(:clojure technologies) (:quil technologies)]
-          }
-          {:title "gloom"
-           :link "https://github.com/SalvatoreTosti/gloom"
-           :img-link "https://raw.githubusercontent.com/SalvatoreTosti/gloom/master/doc/mushrooms-512.png"
-           :alt "Gloom game logo"
-           :one-liner "Dungeon-crawler built in Clojure"
-           :description
-           [:div "Based on Steve Losh's "
-             [:a {:class "hover:opacity-75"
-                  :href "http://stevelosh.com/blog/2012/07/caves-of-clojure-01/"
-                  :target "_"}
-             "Caves of Clojure"
-             ]
-             " articles. "
-             "Uses quil for graphics / input handling.
-              The game is currently a playable WIP.
-              Graphics by "
-              [:a {:class "hover:opacity-75"
-                   :href "https://www.kenney.nl/assets/bit-pack"
-                   :target "_"}
-                   "Kenny.nl."
-              ]
-            ]
-           :technologies [(:clojure technologies) (:quil technologies)]
-          }
-          {:title "Sprite Slice"
-           :link "https://sprite-slice.herokuapp.com/"
-           :img-link "http://www.tostiplace.space/static/img/projects/orange-slice.png"
-           :img-alt "a pixelated orange slice"
-           :description "A web-based spritesheet slicer written in Clojure.
-        Slices large images into smaller square 'tiles'.
-        The sliced tiles are named, compressed and sent them back to the user as a single file."
-           :technologies [(:clojure technologies)]
-          }
-          {:title "Celebrity Gems"
-           :link "http://celebritygemsandjewelry.com/"
-           :img-link "http://www.tostiplace.space/static/img/projects/celebrity-gems.webp"
-           :img-alt "the Celebrity Gems home page"
-           :description "Completely redesigned and reimplemented website for local jewelry store.
-        Overhauled backend to utilize JSON files and simplify content updates.
-        Built using Bootstrap and Javascript / JQuery."
-           :technologies [(:bootstrap technologies) (:javascript technologies) (:jquery technologies)]
-          }
-          {:title "Spicy Bingo"
-           :link "https://github.com/SalvatoreTosti/spicy-bingo"
-           :img-link "http://www.tostiplace.space/static/img/projects/spicy-bingo.webp"
-           :img-alt "a game of bingo"
-           :description [:div "A real-time, multiplayer bingo app created using Flask and SocketIO.
-        Supports the following features:"
-            [:ul {:class "list-disc"}
-               [:li "real-time bingo alerts between sessions"]
-               [:li "URL-based game sessions"]
-               [:li "Cache-based player ID persistence"]
-            ]
-            [:a {:class "hover:opacity-75" :href "https://spicy-bingo.herokuapp.com" :target "_"} "Click here to play!"]
-           ]
-           :technologies [(:python technologies) (:flask technologies) (:socket-io technologies)]
-          }
-          {:title "Plannit"
-           :link "https://plann-it.herokuapp.com/"
-           :img-link "http://www.tostiplace.space/static/img/projects/plannit.webp"
-           :img-alt "the Plannit app home page"
-           :description [:div "An event-revenue calculator built with Flask and Bootstrap.
-        Calculates minimum possible ticket sale counts to aid in revenue projections. "
-            [:p [:a {:class "hover:opacity-75" :href "https://plann-it.herokuapp.com/" :target "_"} "Click here to check it out!"]]]
-           :technologies [(:python technologies) (:flask technologies) (:bootstrap technologies)]
-          }
-        ])
+      (def project-data
+        [{:title "Circle of Competence"
+          :link "https://github.com/atosti/coc"
+          :img-link "https://s3.amazonaws.com/www.saltosti.com/img/coc-example.png"
+          :img-alt "coc program running in a terminal"
+          :one-liner "CLI tool for stock ticker analysis"
+          :description [:div "Scrapes data from financial websites and then performs algorithmic analysis to determine overall 'health' of a stock.
+                  Cooperative project with " [:a {:class "hover:opacity-75" :href "https://github.com/atosti" :target "_"} "atosti"] "."]
+          :technologies [(:python technologies) (:beautiful-soup technologies)]}
+         {:title "tetris-clj"
+          :link "https://github.com/SalvatoreTosti/tetris-clj"
+          :img-link "https://raw.githubusercontent.com/SalvatoreTosti/tetris-clj/master/doc/tetris-2.png"
+          :img-alt "Tetris game written in Clojure"
+          :one-liner "Tetris in Clojure!"
+          :description [:div "Built to demonstrate game development using functional principles.
+              Uses quil for graphics / input handling.
+              Graphics by " [:a {:class "hover:opacity-75" :href "https://www.kenney.nl/assets/bit-pack" :target "_"} "Kenny.nl"] "."]
+          :technologies [(:clojure technologies) (:quil technologies)]}
+         {:title "gloom"
+          :link "https://github.com/SalvatoreTosti/gloom"
+          :img-link "https://raw.githubusercontent.com/SalvatoreTosti/gloom/master/doc/mushrooms-512.png"
+          :alt "Gloom game logo"
+          :one-liner "Dungeon-crawler built in Clojure"
+          :description
+          [:div "Based on Steve Losh's "
+           [:a {:class "hover:opacity-75"
+                :href "http://stevelosh.com/blog/2012/07/caves-of-clojure-01/"
+                :target "_"}
+            "Caves of Clojure"]
+           " articles. "
+           "Uses quil for graphics / input handling.
+                    The game is currently a playable WIP.
+                    Graphics by "
+           [:a {:class "hover:opacity-75"
+                :href "https://www.kenney.nl/assets/bit-pack"
+                :target "_"}
+            "Kenny.nl."]]
+          :technologies [(:clojure technologies) (:quil technologies)]}
+         {:title "Sprite Slice"
+          :link "https://sprite-slice.herokuapp.com/"
+          :img-link "http://www.tostiplace.space/static/img/projects/orange-slice.png"
+          :img-alt "a pixelated orange slice"
+          :description "A web-based spritesheet slicer written in Clojure.
+              Slices large images into smaller square 'tiles'.
+              The sliced tiles are named, compressed and sent them back to the user as a single file."
+          :technologies [(:clojure technologies)]}
+         {:title "Celebrity Gems"
+          :link "http://celebritygemsandjewelry.com/"
+          :img-link "http://www.tostiplace.space/static/img/projects/celebrity-gems.webp"
+          :img-alt "the Celebrity Gems home page"
+          :description "Completely redesigned and reimplemented website for local jewelry store.
+              Overhauled backend to utilize JSON files and simplify content updates.
+              Built using Bootstrap and Javascript / JQuery."
+          :technologies [(:bootstrap technologies) (:javascript technologies) (:jquery technologies)]}
+         {:title "Spicy Bingo"
+          :link "https://github.com/SalvatoreTosti/spicy-bingo"
+          :img-link "http://www.tostiplace.space/static/img/projects/spicy-bingo.webp"
+          :img-alt "a game of bingo"
+          :description [:div "A real-time, multiplayer bingo app created using Flask and SocketIO.
+              Supports the following features:"
+                        [:ul {:class "list-disc"}
+                         [:li "real-time bingo alerts between sessions"]
+                         [:li "URL-based game sessions"]
+                         [:li "Cache-based player ID persistence"]]
+                        [:a {:class "hover:opacity-75" :href "https://spicy-bingo.herokuapp.com" :target "_"} "Click here to play!"]]
+          :technologies [(:python technologies) (:flask technologies) (:socket-io technologies)]}
+         {:title "Plannit"
+          :link "https://plann-it.herokuapp.com/"
+          :img-link "http://www.tostiplace.space/static/img/projects/plannit.webp"
+          :img-alt "the Plannit app home page"
+          :description [:div "An event-revenue calculator built with Flask and Bootstrap.
+              Calculates minimum possible ticket sale counts to aid in revenue projections. "
+                        [:p [:a {:class "hover:opacity-75" :href "https://plann-it.herokuapp.com/" :target "_"} "Click here to check it out!"]]]
+          :technologies [(:python technologies) (:flask technologies) (:bootstrap technologies)]}])
 
-      (defn build-project-elements []
-       (for [{:keys [title link img-link img-alt one-liner description technologies] :as x} project-data]
-         [:div {:class "bg-white max-w-md mx-auto my-5 rounded overflow-hidden shadow-lg"}
-          [:img {:class " w-full" :src img-link :alt img-alt}]
-          [:div {:class "px-6 py-2"}
-           [:a {:href link :target "_"}
-            [:button {:class "text-blue-500 font-bold text-xl mb-2 hover:opacity-75" :type "button"} title]]
-           [:p {:class "text-gray-700 text-base"} one-liner]
-           [:p {:class "text-gray-700 text-base"} description]]
-          [:div {:class "px-6 py-2"}
-          (for [{t-link :link t-title :title} technologies]
-           [:a {:href t-link :target "_"}
-            [:span {:class "inline-block hover:opacity-75 bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"}
-             t-title]])]]))
 
-      (defn projects []
-       [:div {:class "transition content-pane" :id "content-b"}
-        [:div {:class "p-6 bg-blue-50"}
+      (defn build-project-elements
+        []
+        (for [{:keys [title link img-link img-alt one-liner description technologies] :as x} project-data]
+          [:div {:class "bg-white max-w-md mx-auto my-5 rounded overflow-hidden shadow-lg"}
+           [:img {:class " w-full" :src img-link :alt img-alt}]
+           [:div {:class "px-6 py-2"}
+            [:a {:href link :target "_"}
+             [:button {:class "text-blue-500 font-bold text-xl mb-2 hover:opacity-75" :type "button"} title]]
+            [:p {:class "text-gray-700 text-base"} one-liner]
+            [:p {:class "text-gray-700 text-base"} description]]
+           [:div {:class "px-6 py-2"}
+            (for [{t-link :link t-title :title} technologies]
+              [:a {:href t-link :target "_"}
+               [:span {:class "inline-block hover:opacity-75 bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"}
+                t-title]])]]))
+
+
+      (defn projects
+        []
+        [:div {:class "transition content-pane" :id "content-b"}
+         [:div {:class "p-6 bg-blue-50"}
           [:h1 {:class "text-5xl pb-5 font-bold text-blue-500"} "My Projects"]
           [:div
            (build-project-elements)]]])
 
-      (defn about-me []
-       [:div {:class "transition content-pane" :id "content-c"}
-        [:div {:class "container mx-auto mt-8 md:mt-0 md:space-x-10 md:grid gap-5 grid-cols-3 justify-center md:pt-20 md:pb-40"}
-        [:div {:class "grid justify-center items-center order-1 col-span-1"}
-         [:img {:class "lg:h-full md:h-64 h-40 rounded-full shadow-xl" :src "https://s3.amazonaws.com/www.saltosti.com/img/lake-chair-square.jpg"}]]
-         [:div {:class "mt-8 md:mt-0 mr-10 lg:justify-end col-span-2"}
-          [:div {:class "text-5xl text-blue-500 mb-6 font-bold"} "Hello! I'm Sal."]
-          [:div  {:class "text-xl text-gray-700 text-center md:text-left"}
-           [:p "I'm passionate about software engineering and functional programming. I work in a variety of languages including Clojure λ and Python 🐍. In my free time, I make linoleum prints and program games."]
-           [:p "This site is a " [:a {:class "hover:opacity-75 text-blue-500" :href "https://borkdude.github.io/scittle/" :target "_"} "Clojure"] " app running in a <script> tag 🤯, check out the source code " [:a {:class "hover:opacity-75 text-blue-500" :href "https://github.com/SalvatoreTosti/saltosti.com" :target "_"} "here."]]
-            ]]]])
 
-      (defn main []
-       [:div
-        (nav-bar)
-        [:div {:class "container mx-auto text-center"}
-         [:div {:class "py-3"}
-          [:div
-           (about-me)
-           (projects)]]]])
+      (defn about-me
+        []
+        [:div {:class "transition content-pane" :id "content-c"}
+         [:div {:class "container mx-auto mt-8 md:mt-0 md:space-x-10 md:grid gap-5 grid-cols-3 justify-center md:pt-20 md:pb-40"}
+          [:div {:class "grid justify-center items-center order-1 col-span-1"}
+           [:img {:class "lg:h-full md:h-64 h-40 rounded-full shadow-xl" :src "https://s3.amazonaws.com/www.saltosti.com/img/lake-chair-square.jpg"}]]
+          [:div {:class "mt-8 md:mt-0 mr-10 lg:justify-end col-span-2"}
+           [:div {:class "text-5xl text-blue-500 mb-6 font-bold"} "Hello! I'm Sal."]
+           [:div  {:class "text-xl text-gray-700 text-center md:text-left"}
+            [:p "I'm passionate about software engineering and functional programming. I work in a variety of languages including Clojure λ and Python 🐍. In my free time, I make linoleum prints and program games."]
+            [:p "This site is a " [:a {:class "hover:opacity-75 text-blue-500" :href "https://borkdude.github.io/scittle/" :target "_"} "Clojure"] " app running in a <script> tag 🤯, check out the source code " [:a {:class "hover:opacity-75 text-blue-500" :href "https://github.com/SalvatoreTosti/saltosti.com" :target "_"} "here."]]]]]])
+
+
+      (defn main
+        []
+        [:div
+         (nav-bar)
+         [:div {:class "container mx-auto text-center"}
+          [:div {:class "py-3"}
+           [:div
+            (about-me)
+            (projects)]]]])
+
 
       (rdom/render [main] (.getElementById js/document "app"))
   </script>
