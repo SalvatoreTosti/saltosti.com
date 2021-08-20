@@ -40,17 +40,28 @@
          :javascript {:title "Javascript" :link "https://www.javascript.com/"}
          :jquery {:title "JQuery" :link "https://jquery.com/"}
          :flask {:title "Flask" :link "https://flask.palletsprojects.com/en/2.0.x/"}
-         :socket-io {:title "socket.io" :link "https://socket.io/"}})
+         :socket-io {:title "socket.io" :link "https://socket.io/"}
+         :ctmx {:title "ctmx" :link "https://www.ctmx.info/"}
+         })
 
 
       (def project-data
-        [{:title "Circle of Competence"
+        [{:title "cljstyle.com"
+          :link "http://www.cljstyle.com/"
+          :img-link "https://s3.amazonaws.com/www.saltosti.com/img/cljstyle-example.png"
+          :img-alt "cljstyle.com homepage"
+          :one-liner "Clojure code formatting on the web!"
+          :description [:div "A web-form for styling Clojure code using "
+                       [:a {:class "text-blue-500 hover:opacity-75" :href "https://github.com/greglook/cljstyle"} "cljstyle"]
+                       "."]
+          :technologies [(:clojure technologies) (:ctmx technologies)]}
+         {:title "Circle of Competence"
           :link "https://github.com/atosti/coc"
           :img-link "https://s3.amazonaws.com/www.saltosti.com/img/coc-example.png"
           :img-alt "coc program running in a terminal"
           :one-liner "CLI tool for stock ticker analysis"
           :description [:div "Scrapes data from financial websites and then performs algorithmic analysis to determine overall 'health' of a stock.
-                  Cooperative project with " [:a {:class "hover:opacity-75" :href "https://github.com/atosti" :target "_"} "atosti"] "."]
+                  Cooperative project with " [:a {:class "text-blue-500 hover:opacity-75" :href "https://github.com/atosti" :target "_"} "atosti"] "."]
           :technologies [(:python technologies) (:beautiful-soup technologies)]}
          {:title "tetris-clj"
           :link "https://github.com/SalvatoreTosti/tetris-clj"
@@ -59,7 +70,7 @@
           :one-liner "Tetris in Clojure!"
           :description [:div "Built to demonstrate game development using functional principles.
               Uses quil for graphics / input handling.
-              Graphics by " [:a {:class "hover:opacity-75" :href "https://www.kenney.nl/assets/bit-pack" :target "_"} "Kenny.nl"] "."]
+              Graphics by " [:a {:class "text-blue-500 hover:opacity-75" :href "https://www.kenney.nl/assets/bit-pack" :target "_"} "Kenny.nl"] "."]
           :technologies [(:clojure technologies) (:quil technologies)]}
          {:title "gloom"
           :link "https://github.com/SalvatoreTosti/gloom"
@@ -68,7 +79,7 @@
           :one-liner "Dungeon-crawler built in Clojure"
           :description
           [:div "Based on Steve Losh's "
-           [:a {:class "hover:opacity-75"
+           [:a {:class "text-blue-500 hover:opacity-75"
                 :href "http://stevelosh.com/blog/2012/07/caves-of-clojure-01/"
                 :target "_"}
             "Caves of Clojure"]
@@ -76,7 +87,7 @@
            "Uses quil for graphics / input handling.
                     The game is currently a playable WIP.
                     Graphics by "
-           [:a {:class "hover:opacity-75"
+           [:a {:class "text-blue-500 hover:opacity-75"
                 :href "https://www.kenney.nl/assets/bit-pack"
                 :target "_"}
             "Kenny.nl."]]
@@ -107,7 +118,7 @@
                          [:li "real-time bingo alerts between sessions"]
                          [:li "URL-based game sessions"]
                          [:li "Cache-based player ID persistence"]]
-                        [:a {:class "hover:opacity-75" :href "https://spicy-bingo.herokuapp.com" :target "_"} "Click here to play!"]]
+                        [:a {:class "text-blue-500 hover:opacity-75" :href "https://spicy-bingo.herokuapp.com" :target "_"} "Click here to play!"]]
           :technologies [(:python technologies) (:flask technologies) (:socket-io technologies)]}
          {:title "Plannit"
           :link "https://plann-it.herokuapp.com/"
@@ -115,7 +126,7 @@
           :img-alt "the Plannit app home page"
           :description [:div "An event-revenue calculator built with Flask and Bootstrap.
               Calculates minimum possible ticket sale counts to aid in revenue projections. "
-                        [:p [:a {:class "hover:opacity-75" :href "https://plann-it.herokuapp.com/" :target "_"} "Click here to check it out!"]]]
+                        [:p [:a {:class "text-blue-500 hover:opacity-75" :href "https://plann-it.herokuapp.com/" :target "_"} "Click here to check it out!"]]]
           :technologies [(:python technologies) (:flask technologies) (:bootstrap technologies)]}])
 
 
