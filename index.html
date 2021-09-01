@@ -42,11 +42,21 @@
          :flask {:title "Flask" :link "https://flask.palletsprojects.com/en/2.0.x/"}
          :socket-io {:title "socket.io" :link "https://socket.io/"}
          :ctmx {:title "ctmx" :link "https://www.ctmx.info/"}
+         :luminus {:title "luminus" :link "https://luminusweb.com/"}
          })
 
 
       (def project-data
-        [{:title "cljstyle.com"
+        [{:title "chaas.art"
+          :link "http://www.chaas.art/"
+          :img-link "https://s3.amazonaws.com/www.saltosti.com/img/chaas-example.png"
+          :img-alt "chaas.art homepage"
+          :one-liner "colorhunt.co as an API!"
+          :description [:div "A REST API for accessing palettes on "
+                       [:a {:class "text-blue-500 hover:opacity-75" :href "https://www.colorhunt.co/"} "colorhunt.co"]
+                       "."]
+          :technologies [(:clojure technologies) (:luminus technologies) (:ctmx technologies)]}
+        {:title "cljstyle.com"
           :link "http://www.cljstyle.com/"
           :img-link "https://s3.amazonaws.com/www.saltosti.com/img/cljstyle-example.png"
           :img-alt "cljstyle.com homepage"
