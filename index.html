@@ -15,21 +15,25 @@
         [:nav {:class "relative flex flex-wrap items-center justify-between px-2 py-3 bg-blue-500 mb-3"}
          [:div {:class "container px-4 mx-auto flex flex-wrap items-center justify-between"}
           [:div {:class "relative flex justify-between w-auto px-4 static block justify-start"}
-           [:a {:class "text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white" :href "#"}
-            "Salvatore"]]
+           [:i {:class "font-bold uppercase text-lg leading-lg text-white" :href "#"} "Salvatore"]]
           [:div {:class "flex flex-grow items-center"}
            [:ul {:class "flex flex-row list-none ml-auto"}
             [:li {:class "nav-item"}
              [:a {:class "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   :href "https://github.com/SalvatoreTosti"
                   :target "_"}
-              [:i {:class "fab fa-github text-lg leading-lg text-white opacity-75"}]]]
+              [:i {:class "fab fa-github text-lg leading-lg text-white"}]]]
             [:li {:class "nav-item"}
              [:a {:class "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   :href "https://www.linkedin.com/in/saltosti/"
                   :target "_"}
-              [:i {:class "fab fa-linkedin-in text-lg leading-lg text-white opacity-75"}]]]]]]])
+              [:i {:class "fab fa-linkedin-in text-lg leading-lg text-white"}]]]
 
+            [:li {:class "nav-item"}
+             [:a {:class "px-3 py-2 flex items-center font-bold text-white hover:opacity-75"
+                  :href "https://www.fiverr.com/salvatoretosti"
+                  :target "_"}
+              [:div {:class "text-lg text-white"} "fiverr"]]]]]]])
 
       (def technologies
         {:clojure {:title "Clojure" :link "https://clojure.org/"}
