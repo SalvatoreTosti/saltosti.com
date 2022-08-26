@@ -1,215 +1,507 @@
 <html>
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2DJ5LPYXR1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-2DJ5LPYXR1');
-    </script>
-
+    <title>Salvatore Tosti</title>
+    <meta name="Salvatore Tosti" content="Professional softare engineer and SaaS consultant specializing in Python and Clojure web applications.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/gh/borkdude/scittle@0.0.2/js/scittle.js" type="application/javascript"></script>
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <script src="https://kit.fontawesome.com/e8c67d78ce.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/gh/borkdude/scittle@0.0.2/js/scittle.reagent.js" type="application/javascript"></script>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <script type="application/x-scittle">
-      (require '[reagent.dom :as rdom])
+    <script>
+      function setCookie(name, value, days) {
+          var expires = "";
+          if (days) {
+              var date = new Date();
+              date.setTime(date.getTime() + (days*24*60*60*1000));
+              expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      }
 
-      (defn nav-bar
-        []
-        [:nav {:class "relative flex flex-wrap items-center justify-between px-2 py-3 bg-blue-500 mb-3"}
-         [:div {:class "container px-4 mx-auto flex flex-wrap items-center justify-between"}
-          [:div {:class "relative flex justify-between w-auto px-4 static block justify-start"}
-           [:i {:class "font-bold uppercase text-lg leading-lg text-white mr-5"} "Salvatore"]
-           [:a {:href "/gallery"} [:i {:class "font-bold uppercase text-lg leading-lg text-white hover:opacity-75"} "gallery"]]]
-          [:div {:class "flex flex-grow items-center"}
-           [:ul {:class "flex flex-row list-none ml-auto"}
-            [:li {:class "nav-item"}
-             [:a {:class "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  :href "https://github.com/SalvatoreTosti"
-                  :target "_"}
-              [:i {:class "fab fa-github text-lg leading-lg text-white"}]]]
-            [:li {:class "nav-item"}
-             [:a {:class "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  :href "https://www.linkedin.com/in/saltosti/"
-                  :target "_"}
-              [:i {:class "fab fa-linkedin-in text-lg leading-lg text-white"}]]]
+      function getCookie(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++) {
+              var c = ca[i];
+              while (c.charAt(0)==' ') c = c.substring(1,c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
+      }
 
-            [:li {:class "nav-item"}
-             [:a {:class "px-3 py-2 flex items-center font-bold text-white hover:opacity-75"
-                  :href "https://www.fiverr.com/salvatoretosti"
-                  :target "_"}
-              [:div {:class "text-lg text-white"} "fiverr"]]]]]]])
+      function eraseCookie(name) {   
+              document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
 
-      (def technologies
-        {:clojure {:title "Clojure" :link "https://clojure.org/"}
-         :quil {:title "quil" :link "http://www.quil.info/"}
-         :python {:title "Python" :link "https://www.python.org/"}
-         :beautiful-soup {:title "Beautiful Soup" :link "https://beautiful-soup-4.readthedocs.io/en/latest/#"}
-         :bootstrap {:title "Bootstrap" :link "https://getbootstrap.com/"}
-         :javascript {:title "Javascript" :link "https://www.javascript.com/"}
-         :jquery {:title "JQuery" :link "https://jquery.com/"}
-         :flask {:title "Flask" :link "https://flask.palletsprojects.com/en/2.0.x/"}
-         :socket-io {:title "socket.io" :link "https://socket.io/"}
-         :ctmx {:title "ctmx" :link "https://www.ctmx.info/"}
-         :luminus {:title "luminus" :link "https://luminusweb.com/"}
-         })
+      function reloadHexTiles(){
+              let items = [
+                      {"href" : "https://www.youtube.com/watch?v=IW3kW6dHhd8", "symbol" : "🎶"},
+                      {"href" : "https://en.wikipedia.org/wiki/The_Mythical_Man-Month", "symbol" : "🏛️"},
+                      {"href" : "https://en.wikipedia.org/wiki/Lisp_(programming_language)", "symbol" : "☯️"},
+                      {"href" : "https://clojure.org/", "symbol" : "🧙"},
+                      {"href" : "https://www.python.org/", "symbol" : "🐍"},
+                      {"href" : "https://palletsprojects.com/p/flask/", "symbol" : "⚗️"},
+                      {"href" : "https://www.youtube.com/watch?v=1mCO440DjnM", "symbol" : "🌌"},
+                      {"href" : "https://www.youtube.com/watch?v=nz7AoR-hMjo", "symbol" : "🪐"},
+                      {"href" : "https://www.gbstudio.dev/", "symbol" : "🕹️"},
+                      {"href" : "https://www.heroku.com/home", "symbol" : "🚀"},
+                      {"href" : "http://pespmc1.vub.ac.be/REQVAR.html", "symbol" : "🌀"},
+                      {"href" : "https://www.youtube.com/watch?v=b7bkhophqwE", "symbol" : "🛹"},
+                      {"href" : "https://upload.wikimedia.org/wikipedia/commons/b/b7/Black_Knight_Satellite_%28cropped%29.jpg", "symbol" : "🛰️"},
+                      {"href" : "https://thenightmonitor.bandcamp.com/track/raven-in-tomb-land", "symbol" : "🛸"},
+                      {"href" : "https://www.youtube.com/watch?v=sG3PWet8fDk", "symbol" : "📇"},
+                      {"href" : "https://www.youtube.com/watch?v=4cK2MPgAHRk", "symbol" : "📺"},
+                      {"href" : "https://www.youtube.com/watch?v=hkWoyqkVwvw", "symbol" : "🌓"},
+                      {"href" : "https://soundcloud.com/dj-mastercard/bell-track-18", "symbol" : "🔔"},
+                      {"href" : "https://en.wikipedia.org/wiki/Long-term_nuclear_waste_warning_messages", "symbol" : "⏱️"},
+                      {"href" : "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-lowtech-website.html", "symbol" : "💡"},
+                      {"href" : "https://www.youtube.com/watch?v=3bR6w2_e0O0", "symbol" : "🌳"}]
 
+              items = items 
+                .map(value => ({ value, sort: Math.random() }))
+                .sort((a, b) => a.sort - b.sort)
+                .map(({ value }) => value)
+              items = items.slice(0, 6);
 
-      (def project-data
-        [{:title "chaas.art"
-          :link "http://www.chaas.art/"
-          :img-link "https://s3.amazonaws.com/www.saltosti.com/img/chaas-example.webp"
-          :img-alt "chaas.art homepage"
-          :one-liner "colorhunt.co as an API!"
-          :description [:div "A REST API for accessing palettes on "
-                       [:a {:class "text-blue-500 hover:opacity-75" :href "https://www.colorhunt.co/"} "colorhunt.co"]
-                       "."]
-          :technologies [(:clojure technologies) (:luminus technologies) (:ctmx technologies)]}
-        {:title "cljstyle.com"
-          :link "http://www.cljstyle.com/"
-          :img-link "https://s3.amazonaws.com/www.saltosti.com/img/cljstyle-example.webp"
-          :img-alt "cljstyle.com homepage"
-          :one-liner "Clojure code formatting on the web!"
-          :description [:div "A web-form for styling Clojure code using "
-                       [:a {:class "text-blue-500 hover:opacity-75" :href "https://github.com/greglook/cljstyle"} "cljstyle"]
-                       "."]
-          :technologies [(:clojure technologies) (:ctmx technologies)]}
-         {:title "Circle of Competence"
-          :link "https://github.com/atosti/coc"
-          :img-link "https://s3.amazonaws.com/www.saltosti.com/img/coc-example.webp"
-          :img-alt "coc program running in a terminal"
-          :one-liner "CLI tool for stock ticker analysis"
-          :description [:div "Scrapes data from financial websites and then performs algorithmic analysis to determine overall 'health' of a stock.
-                  Cooperative project with " [:a {:class "text-blue-500 hover:opacity-75" :href "https://github.com/atosti" :target "_"} "atosti"] "."]
-          :technologies [(:python technologies) (:beautiful-soup technologies)]}
-         {:title "tetris-clj"
-          :link "https://github.com/SalvatoreTosti/tetris-clj"
-          :img-link "https://raw.githubusercontent.com/SalvatoreTosti/tetris-clj/master/doc/tetris-2.png"
-          :img-alt "Tetris game written in Clojure"
-          :one-liner "Tetris in Clojure!"
-          :description [:div "Built to demonstrate game development using functional principles.
-              Uses quil for graphics / input handling.
-              Graphics by " [:a {:class "text-blue-500 hover:opacity-75" :href "https://www.kenney.nl/assets/bit-pack" :target "_"} "Kenny.nl"] "."]
-          :technologies [(:clojure technologies) (:quil technologies)]}
-         {:title "gloom"
-          :link "https://github.com/SalvatoreTosti/gloom"
-          :img-link "https://raw.githubusercontent.com/SalvatoreTosti/gloom/master/doc/mushrooms-512.png"
-          :alt "Gloom game logo"
-          :one-liner "Dungeon-crawler built in Clojure"
-          :description
-          [:div "Based on Steve Losh's "
-           [:a {:class "text-blue-500 hover:opacity-75"
-                :href "http://stevelosh.com/blog/2012/07/caves-of-clojure-01/"
-                :target "_"}
-            "Caves of Clojure"]
-           " articles. "
-           "Uses quil for graphics / input handling.
-                    The game is currently a playable WIP.
-                    Graphics by "
-           [:a {:class "text-blue-500 hover:opacity-75"
-                :href "https://www.kenney.nl/assets/bit-pack"
-                :target "_"}
-            "Kenny.nl."]]
-          :technologies [(:clojure technologies) (:quil technologies)]}
-         {:title "Sprite Slice"
-          :link "https://sprite-slice.herokuapp.com/"
-          :img-link "https://s3.amazonaws.com/www.saltosti.com/img/orange-slice.png"
-          :img-alt "a pixelated orange slice"
-          :description "A web-based spritesheet slicer written in Clojure.
-              Slices large images into smaller square 'tiles'.
-              The sliced tiles are named, compressed and sent them back to the user as a single file."
-          :technologies [(:clojure technologies)]}
-         {:title "Celebrity Gems"
-          :link "http://celebritygemsandjewelry.com/"
-          :img-link "https://s3.amazonaws.com/www.saltosti.com/img/celebrity-gems.webp"
-          :img-alt "the Celebrity Gems home page"
-          :description "Completely redesigned and reimplemented website for local jewelry store.
-              Overhauled backend to utilize JSON files and simplify content updates.
-              Built using Bootstrap and Javascript / JQuery."
-          :technologies [(:bootstrap technologies) (:javascript technologies) (:jquery technologies)]}
-         {:title "Spicy Bingo"
-          :link "https://github.com/SalvatoreTosti/spicy-bingo"
-          :img-link "https://s3.amazonaws.com/www.saltosti.com/img/spicy-bingo.webp" 
-          :img-alt "a game of bingo"
-          :description [:div "A real-time, multiplayer bingo app created using Flask and SocketIO.
-              Supports the following features:"
-                        [:ul {:class "list-disc"}
-                         [:li "real-time bingo alerts between sessions"]
-                         [:li "URL-based game sessions"]
-                         [:li "Cache-based player ID persistence"]]
-                        [:a {:class "text-blue-500 hover:opacity-75" :href "https://spicy-bingo.herokuapp.com" :target "_"} "Click here to play!"]]
-          :technologies [(:python technologies) (:flask technologies) (:socket-io technologies)]}
-         {:title "Plannit"
-          :link "https://plann-it.herokuapp.com/"
-          :img-link "https://s3.amazonaws.com/www.saltosti.com/img/plannit.webp" 
-          :img-alt "the Plannit app home page"
-          :description [:div "An event-revenue calculator built with Flask and Bootstrap.
-              Calculates minimum possible ticket sale counts to aid in revenue projections. "
-                        [:p [:a {:class "text-blue-500 hover:opacity-75" :href "https://plann-it.herokuapp.com/" :target "_"} "Click here to check it out!"]]]
-          :technologies [(:python technologies) (:flask technologies) (:bootstrap technologies)]}])
+              let hex = document.querySelector("#hex")
+              hex.innerHTML = '';
+
+              for(item of items){
+                      let x = document.createElement('a')
+                      x.setAttribute('href', item['href'])
+                      x.setAttribute('target','_')
+                      x.append(item['symbol'])
+                      x.classList.add('flex-center')
+                      hex.append(x)
+                    }
+              let img = document.createElement('img')
+              img.classList.add('hex-reload')
+              img.setAttribute('src', 'https://s3.amazonaws.com/www.saltosti.com/img/lake-chair-sm.webp')
+              img.setAttribute('alt', 'Salvatore Tosti sitting in a lake chair')
+              img.onclick = function(){ reloadHexTiles() }
 
 
-      (defn build-project-elements
-        []
-        (for [{:keys [title link img-link img-alt one-liner description technologies] :as x} project-data]
-          [:div {:class "bg-white max-w-md mx-auto my-5 rounded overflow-hidden shadow-lg"}
-           [:img {:class " w-full" :src img-link :alt img-alt}]
-           [:div {:class "px-6 py-2"}
-            [:a {:href link :target "_"}
-             [:button {:class "text-blue-500 font-bold text-xl mb-2 hover:opacity-75" :type "button"} title]]
-            [:p {:class "text-gray-700 text-base"} one-liner]
-            [:p {:class "text-gray-700 text-base"} description]]
-           [:div {:class "px-6 py-2"}
-            (for [{t-link :link t-title :title} technologies]
-              [:a {:href t-link :target "_"}
-               [:span {:class "inline-block hover:opacity-75 bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"}
-                t-title]])]]))
+              let x = hex.children[1]
+              hex.insertBefore(img, x)
+            }
+
+      function displayBrightness(brightness, target){
+        if(brightness == 'dark'){ 
+          let root = document.styleSheets[0].rules[0];
+          root.style.setProperty('--color-1', '#4CACBC');
+          root.style.setProperty('--color-2', '#6CC4A1');
+          root.style.setProperty('--color-3', '#A0D995');
+          root.style.setProperty('--color-4', '#F6E3C5');
+
+          target.innerHTML = '☀️'
+        } else {
+          let root = document.styleSheets[0].rules[0];
+          root.style.setProperty('--color-1', '#F6E3C5');
+          root.style.setProperty('--color-2', '#A0D995');
+          root.style.setProperty('--color-3', '#6CC4A1');
+          root.style.setProperty('--color-4', '#4CACBC');
+          target.innerHTML = '🌒'
+        }
+      }
+
+      window.onload = function() {
+        reloadHexTiles()
+        for(x of document.getElementsByClassName('hex-reload')){
+          x.onclick = function(){ reloadHexTiles() }
+        }
+        displayBrightness(getCookie('brightness'), document.getElementById('brightness-toggle'))
+
+        document.getElementById('brightness-toggle').onclick = function(e){
+          let brightness = getCookie('brightness')
+          if(brightness == 'dark'){ eraseCookie('brightness') } 
+          else { setCookie('brightness', 'dark', 365) }
+          displayBrightness(getCookie('brightness'), e.target)
+        }
+      }
 
 
-      (defn projects
-        []
-        [:div {:class "transition content-pane" :id "content-b"}
-         [:div {:class "p-6 bg-blue-50"}
-          [:h1 {:class "text-5xl pb-5 font-bold text-blue-500"} "My Projects"]
-          [:div
-           (build-project-elements)]]])
-
-
-      (defn about-me
-        []
-        [:div {:class "transition content-pane" :id "content-c"}
-         [:div {:class "container mx-auto mt-8 md:mt-0 md:space-x-10 md:grid gap-5 grid-cols-3 justify-center md:pt-20 md:pb-40"}
-          [:div {:class "grid justify-center items-center order-1 col-span-1"}
-           [:img {:class "lg:h-96 h-64 rounded-full shadow-xl" :src "https://s3.amazonaws.com/www.saltosti.com/img/lake-chair-square.jpg"}]]
-          [:div {:class "mt-8 md:mt-0 mr-10 lg:justify-end col-span-2"}
-           [:div {:class "text-5xl text-blue-500 mb-6 font-bold"} "Hello! I'm Sal."]
-           [:div  {:class "text-xl text-gray-700 text-center md:text-left"}
-            [:p "I'm passionate about software engineering and functional programming. I work in a variety of languages including Clojure λ and Python 🐍. In my free time, I make linoleum prints and program games."]
-            [:p "This site is a " [:a {:class "hover:opacity-75 text-blue-500" :href "https://github.com/babashka/scittle" :target "_"} "Clojure"] " app running in a <script> tag 🤯, check out the source code " [:a {:class "hover:opacity-75 text-blue-500" :href "https://github.com/SalvatoreTosti/saltosti.com" :target "_"} "here."]]]]]])
-
-
-      (defn main
-        []
-        [:div
-         (nav-bar)
-         [:div {:class "container mx-auto text-center"}
-          [:div {:class "py-3"}
-           [:div
-            (about-me)
-            (projects)]]]])
-
-
-      (rdom/render [main] (.getElementById js/document "app"))
-  </script>
+    </script>
   </head>
-  <body class="bg-gray-50">
-    <div id="app"></div>
+  <style>
+
+    :root {
+      /*
+      --color-1: #F8ECD1;
+      --color-2: #DEB6AB;
+      --color-3: #AC7D88;
+      --color-4: #85586F;
+       */
+
+      /* --color-1: #4CACBC;
+          --color-2: #6CC4A1;
+          --color-3: #A0D995;
+          --color-4: #F6E3C5; */
+
+          --color-1: #F6E3C5;
+          --color-2: #A0D995;
+          --color-3: #6CC4A1;
+          --color-4: #4CACBC;
+    }
+
+    body {
+      font-family: sans-serif;
+      background: var(--color-1);
+      padding-left: 15%;
+      padding-right: 15%;
+    }
+
+    .hex-container {
+      margin: 0;
+      display: grid;
+      place-content: center;
+    }
+
+    .hex {
+      --s: 170px; /* control the size */
+      --g: 12px;  /* control the gap */
+      display: grid;
+      margin: calc(var(--s) + var(--g));
+    }
+
+    .hex > img {
+      grid-area: 1/1;
+      width: var(--s);
+      aspect-ratio: 1.15;
+      object-fit: cover;
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%,75% 100%,25% 100%,0 50%);
+      transform: translate(var(--_x,0),var(--_y,0)) scale(var(--_t,1));
+      cursor: pointer;
+      transition: .2s linear;
+    }
+    .hex > img:hover {
+      z-index: 1;
+      --_t: 1.2;
+    }
+
+    .hex > img:nth-child(1) {--_y: calc(-100% - var(--g))}
+    .hex > img:nth-child(7) {--_y: calc( 100% + var(--g))}
+    .hex > img:nth-child(3),
+    .hex > img:nth-child(5) {--_x: calc(-75% - .87*var(--g))}
+    .hex > img:nth-child(4),
+    .hex > img:nth-child(6) {--_x: calc( 75% + .87*var(--g))}
+    .hex > img:nth-child(3),
+    .hex > img:nth-child(4) {--_y: calc(-50% - .5*var(--g))}
+    .hex > img:nth-child(5), 
+    .hex > img:nth-child(6) {--_y: calc( 50% + .5*var(--g))}
+
+    .hex > a {
+      grid-area: 1/1;
+      width: var(--s);
+      aspect-ratio: 1.15;
+      object-fit: cover;
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%,75% 100%,25% 100%,0 50%);
+      transform: translate(var(--_x,0),var(--_y,0)) scale(var(--_t,1));
+      background: var(--color-2);
+      cursor: pointer;
+      filter: grayscale(80%);
+      transition: .2s linear;
+    }
+    .hex > a:hover {
+      filter: grayscale(0);
+      z-index: 1;
+      --_t: 1.2;
+    }
+
+    .hex > a:nth-child(1) {--_y: calc(-100% - var(--g))}
+    .hex > a:nth-child(7) {--_y: calc( 100% + var(--g))}
+    .hex > a:nth-child(3),
+    .hex > a:nth-child(5) {--_x: calc(-75% - .87*var(--g))}
+    .hex > a:nth-child(4),
+    .hex > a:nth-child(6) {--_x: calc( 75% + .87*var(--g))}
+    .hex > a:nth-child(3),
+    .hex > a:nth-child(4) {--_y: calc(-50% - .5*var(--g))}
+    .hex > a:nth-child(5), 
+    .hex > a:nth-child(6) {--_y: calc( 50% + .5*var(--g))}
+
+    .flex-center {
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+    }
+    .center {
+      text-align: center;
+    }
+
+    header {
+      font-size: 3rem;
+      color: var(--color-4);
+    }
+
+    .gallery-container {
+      display: grid; 
+      grid-template-columns: 1fr 1fr 1fr; 
+      grid-template-rows: 1fr 1fr 1fr; 
+      gap: 0.5em 0.5em; 
+    }
+
+    article {
+      background-color: var(--color-2);
+      padding: 1rem;
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+    }
+
+    article > header {
+      font-size: 2rem;
+      color: var(--color-4);
+      margin-bottom: .25rem;
+    }
+
+    @media only screen and (max-width: 480px) {
+      body {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      article > img {
+        display: none !important;
+      }
+
+      article > .gallery-placeholder {
+        display: none !important;
+      }
+
+      .gallery-container {
+        display: block;
+      }
+
+      .hex {
+        --s: 135px; /* control the size */
+        --g: 10px;  /* control the gap */
+        display: grid;
+        margin: calc(var(--s) + var(--g));
+      }
+    }
+
+    article > img {
+      width: 100%
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 15rem;
+      background-color: var(--color-4); 
+      color: var(--color-1);
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10rem;
+    }
+
+    nav > ol > li {
+      display: inline-block;
+      padding-right: 0.5rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+
+  </style>
+  <body>
+    <nav>
+      <ol>
+        <li id="brightness-toggle">☀️</li>
+      </ol>
+    </nav>
+    <div class="hex-container">
+      <div id="hex" class="hex">
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+      </div>
+    </div>
+
+    <main>
+      <header><a id="salvatore-tosti">Salvatore Tosti</a></header>
+      <hr>
+      <section>
+        <p>I'm passionate about software engineering and functional programming. I work in a variety of languages including Clojure λ and Python 🐍. In my free time, I make linoleum prints and program games. I'm interested in low-cost websites using techonolgies like HTMX, AWS Lambda and Clojure.
+        </p>
+      </section>
+
+      <header>Consulting</header>
+      <hr>
+      <section>
+        <strong><em>high performance, budget concious</em></strong>
+        <p>If you're looking to realize your dream app or just take an excel spreadsheet to the next level, I can help! I specialize in delivering full-stack web applications with mobile-friendly frontends and reliable backends. I've worked with clients of all sizes to deliver internal and external facing web applications.</p>
+        <p><a href="">Request a quote</a><p>
+      </section>
+
+      <header>Gallery</header>
+      <hr>
+      <section class="gallery-container">
+        <article>
+          <header>
+            <a href="https://github.com/SalvatoreTosti/htmx-lambda-url-example" target="_">HTMX via AWS Lambda URL</a>
+          </header>
+          <section>
+            <em>HTMX endpoints in under 5 minutes!</em>
+            <p>A step-by-step guide for setting up publicly accssible HTMX endpoints using AWS Lambda URLs</p>
+            <ul class="technologies-list">
+              <li><a href="https://htmx.org/" target="_">HTMX</a></li>
+              <li><a href="https://aws.amazon.com/lambda/" target="_">AWS Lambda</a></li>
+            </ul>
+          </section>
+          <div class="gallery-placeholder">λ</div>
+        </article>
+
+        <article>
+          <header>
+            <a href="http://www.chaas.art">chaas.art</a>
+          </header>
+          <section>
+            <em>colorhunt.co as an API!</em>
+            <p>A REST API for accessing palettes on <a href="colorhunt.co" target="_">colorhunt.co</a></p>
+            <ul class="technologies-list">
+              <li><a href="https://clojure.org/" target="_">Clojure</a></li>
+              <li><a href="https://luminusweb.com/" target="_">luminus</a></li>
+              <li><a href="https://www.ctmx.info/" target="_">ctmx</a></li>
+            </ul>
+          </section>
+          <img src="https://s3.amazonaws.com/www.saltosti.com/img/chaas-sm.webp" alt="Home page of the chaas app showing a captured 4 color palette">
+        </article>
+
+        <article>
+          <header>
+            <a href="http://www.cljstyle.com/">cljstyle.com</a>
+          </header>
+          <section>
+            <em>Clojure code formatting on the web!</em>
+            <p>A web-form for styling Clojure code using <a href="https://github.com/greglook/cljstyle">cljstyle</a></p>
+            <ul class="technologies-list">
+              <li><a href="https://clojure.org/">Clojure</a></li>
+              <li><a href="https://www.ctmx.info/">ctmx</a></li>
+            </ul>
+          </section>
+          <img src="https://s3.amazonaws.com/www.saltosti.com/img/cljstyle-sm.webp" alt="Home page of the cljstyle.com app">
+        </article>
+
+        <article>
+          <header>
+            <a href="https://github.com/atosti/coc">Circle of Competence</a>
+          </header>
+          <section>
+            <em>CLI tool for stock ticker analysis</em>
+            <p>Scrapes data from financial websites and then performs algorithmic analysis to determine overall 'health' of a stock. Cooperative project with <a href="https://github.com/atosti">atosti</a></p>
+            <ul class="technologies-list">
+              <li><a href="https://www.python.org/">Python</a></li>
+              <li><a href="https://beautiful-soup-4.readthedocs.io/en/latest/#">Beautiful Soup</a></li>
+            </ul>
+          </section>
+          <img src="https://s3.amazonaws.com/www.saltosti.com/img/coc-sm.webp" alt="A list of calculated stock information shown in a terminal">
+        </article>
+
+        <article>
+          <header>
+            <a href="https://github.com/SalvatoreTosti/tetris-clj">tetris-clj</a>
+          </header>
+          <section>
+            <em>Tetris in Clojure!</em>
+            <p>Built to demonstrate game development using functional principles. Uses quil for graphics / input handling. Graphics by <a href="https://www.kenney.nl/assets/bit-pack">Kenny.nl</a></p>
+            <ul class="technologies-list">
+              <li><a href="https://clojure.org/">Clojure</a></li>
+              <li><a href="http://www.quil.info/">quil</a></li>
+            </ul>
+          </section>
+          <img src="https://raw.githubusercontent.com/SalvatoreTosti/tetris-clj/master/doc/tetris-2.png" alt="A game of tetris">
+        </article>
+
+        <article>
+          <header>
+            <a href="https://github.com/SalvatoreTosti/gloom">gloom</a>
+          </header>
+          <section>
+            <em>Dungeon-crawler built in Clojure</em>
+            <p>Based on Steve Losh's <a href="http://stevelosh.com/blog/2012/07/caves-of-clojure-01/">Caves of Clojure</a> articles. Uses quil for graphics / input handling. The game is currently a playable WIP. Graphics by <a href="https://www.kenney.nl/assets/bit-pack">Kenny.nl</a></p>
+            <ul class="technologies-list">
+              <li><a href="https://clojure.org/">Clojure</a></li>
+              <li><a href="http://www.quil.info/">quil</a></li>
+            </ul>
+          </section>
+          <img src="https://raw.githubusercontent.com/SalvatoreTosti/gloom/master/doc/mushrooms-512.png" alt="A cartoon image of two mushrooms">
+        </article>
+
+        <article>
+          <header>
+            <a href="https://sprite-slice.herokuapp.com/">Sprite Slice</a>
+          </header>
+          <section>
+            <em>A web-based spritesheet slicer</em>
+            <p>Slices large images into smaller square 'tiles'. The sliced tiles are named, compressed and sent them back to the user as a single file.</p>
+            <ul class="technologies-list">
+              <li><a href="https://clojure.org/">Clojure</a></li>
+            </ul>
+          </section>
+          <img src="https://s3.amazonaws.com/www.saltosti.com/img/orange-slice.png" alt="A pixelated orange slice">
+        </article>
+
+        <article>
+          <header>
+            <a href="https://github.com/SalvatoreTosti/spicy-bingo">Spicy Bingo</a>
+          </header>
+          <section>
+            <em>A real-time, multiplayer bingo app</em>
+            <p>Supports real-time bingo alerts between sessions, URL-based game sessions and Cache-based player ID persistence.</p>
+            <ul class="technologies-list">
+              <li><a href="https://www.python.org/">Python</a></li>
+              <li><a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a></li>
+              <li><a href="https://socket.io/">socket.io</a></li>
+            </ul>
+          </section>
+          <img src="https://s3.amazonaws.com/www.saltosti.com/img/spicy-bingo-sm.webp" alt="A bingo game being played in the Spicy Bingo app">
+        </article>
+
+        <article>
+          <header>
+            <a href="https://plann-it.herokuapp.com/">Plannit</a>
+          </header>
+          <section>
+            <em>An event-revenue calculator</em>
+            <p>Calculates minimum possible ticket sale counts to aid in revenue projections</p>
+            <ul class="technologies-list">
+              <li><a href="https://www.python.org/">Python</a></li>
+              <li><a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a></li>
+              <li><a href="https://getbootstrap.com/">Bootstrap</a></li>
+            </ul>
+          </section>
+          <img src="https://s3.amazonaws.com/www.saltosti.com/img/plannit-sm.webp" alt="Home page of the Plannit application">
+        </article>
+      </section>
+
+      <header>Contact</header>
+      <hr>
+      <section>
+        <ul>
+          <li><a href="mailto:salvatore.tosti@pm.me">Email</a></li>
+          <li><a href="https://github.com/SalvatoreTosti" target="_">Github</a></li>
+          <li><a href="https://www.fiverr.com/salvatoretosti" target="_">Fiverr</a></li>
+          <li><a href="https://www.linkedin.com/in/saltosti/" target="_">LinkedIn</a></li>
+        </ul>
+      </section>
+
+      <header>Inspirations</header>
+      <hr>
+      <section>
+        <ul>
+          <li><a href="https://solar.lowtechmagazine.com/">https://solar.lowtechmagazine.com/</a></li>
+          <li><a href="https://www.colorhunt.co/palette/f8ecd1deb6abac7d8885586f">https://www.colorhunt.co/palette/f8ecd1deb6abac7d8885586f</a></li>
+          <li><a href="https://www.colorhunt.co/palette/f6e3c5a0d9956cc4a14cacbc">https://www.colorhunt.co/palette/f6e3c5a0d9956cc4a14cacbc</a></li>
+        </ul>
+      </section>
+
+    </main>
   </body>
 </html>
+
+

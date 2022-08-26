@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clojure Data Convert</title>
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.7.0" integrity="sha384-EzBXYPt0/T6gxNp0nuPtLkmRpmDBbjg6WmCUZRLXBBwYYmwAUxzlSGej0ARHX0Bo" crossorigin="anonymous" defer></script>
+  </head>
+  <body>
+    <nav class="py-5 px-9 bg-blue-500">
+      <div class="container mx-auto flex items-center justify-between font-bold text-white text-lg">
+      <i class="container mx-auto flex items-center justify-between font-bold text-white text-lg uppercase font-bold">
+        <a class="hover:opacity-75" href="/">Home</a>
+      </i>
+        <ul class="flex ml-auto items-center">
+          <li class="nav-item">
+            <a class="hover:opacity-75" href="https://github.com/SalvatoreTosti/htmx-lambda-url-example">Github</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mx-auto my-10 px-3">
+      <div class="max-w-xl mx-auto">
+        <div class="text-center">
+          <h1 class="my-3 text-5xl font-bold text-gray-700">Clojure Data Converter</h1>
+          <p class="text-gray-400">Fill out the form below to convert data from one type to another.</p>
+        </div>
+        <div>
+          <form 
+             hx-post="https://etfu2tgcbfs65atjaqmnl3fdfa0nwsnp.lambda-url.us-east-2.on.aws/"  
+             hx-target="this"
+             hx-swap="outerHTML"> 
+
+            <div class="flex mb-6">
+              <div class="w-1/2 mx-2">
+                <label class="block mb-2 text-sm text-gray-600" for="input-type">Input Type</label>
+                <select name="input-type"
+                        class="mb-3 p-2 text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded">
+                  <option value="json">JSON</option>
+                  <option value="edn">EDN</option>
+                  <option value="transit">Transit (JSON)</option>
+                </select>
+                <label class="block mb-2 text-sm text-gray-600" for="input">Input</label>
+                <textarea
+                    rows="5"
+                    name="input"
+                    placeholder="Blah blah blah..."
+                    class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300"
+                    required></textarea>
+              </div>
+
+              <div class="w-1/2 mx-2">
+                <label class="block mb-2 text-sm text-gray-600" for="output-type">Output Type</label>
+                <select name="output-type"
+                        class="mb-3 p-2 text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded">
+                  <option value="json">JSON</option>
+                  <option value="edn">EDN</option>
+                  <option value="transit">Transit (JSON)</option>
+                </select>
+                <label class="block mb-2 text-sm text-gray-600" for="output">Output</label>
+                <textarea
+                    rows="5"
+                    name="output"
+                    placeholder="Blah blah blah..."
+                    class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md  focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300"
+                    required></textarea>
+              </div>
+            </div>
+
+            <button
+                type="submit"
+                class="w-full px-2 py-4 text-white bg-blue-500 rounded-md focus:bg-blue-600 focus:outline-none hover:bg-blue-600">
+              <div class="flex justify-center items-center">
+                <div class="mr-3">Submit</div>
+                <img 
+                     class="htmx-indicator w-25" 
+                     src="https://s3.us-east-2.amazonaws.com/www.tosti.consulting/img/svg-loaders/tail-spin.svg">
+              </div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
