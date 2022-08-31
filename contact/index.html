@@ -1,0 +1,234 @@
+<html>
+  <head>
+    <title>Contact</title>
+    <meta name="Salvatore Tosti contact" content="Salvatore Tosti contact page for Pythong and Clojure SaaS consulting.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      function setCookie(name, value, days) {
+              var expires = "";
+              if (days) {
+                      var date = new Date();
+                      date.setTime(date.getTime() + (days*24*60*60*1000));
+                      expires = "; expires=" + date.toUTCString();
+                    }
+              document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+            }
+
+      function getCookie(name) {
+              var nameEQ = name + "=";
+              var ca = document.cookie.split(';');
+              for(var i=0;i < ca.length;i++) {
+                      var c = ca[i];
+                      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                    }
+              return null;
+            }
+
+      function eraseCookie(name) {   
+              document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
+
+      function displayBrightness(brightness, target){
+              if(brightness == 'dark'){ 
+                      let root = document.styleSheets[0].rules[0];
+                      root.style.setProperty('--color-1', '#4CACBC');
+                      root.style.setProperty('--color-2', '#6CC4A1');
+                      root.style.setProperty('--color-3', '#A0D995');
+                      root.style.setProperty('--color-4', '#F6E3C5');
+
+                      target.innerHTML = '☀️'
+                    } else {
+                            let root = document.styleSheets[0].rules[0];
+                            root.style.setProperty('--color-1', '#F6E3C5');
+                            root.style.setProperty('--color-2', '#A0D995');
+                            root.style.setProperty('--color-3', '#6CC4A1');
+                            root.style.setProperty('--color-4', '#4CACBC');
+                            target.innerHTML = '🌒'
+                          }
+            }
+
+      window.onload = function() {
+              displayBrightness(getCookie('brightness'), document.getElementById('brightness-toggle'))
+
+              document.getElementById('brightness-toggle').onclick = function(e){
+                      let brightness = getCookie('brightness')
+                      if(brightness == 'dark'){ eraseCookie('brightness') } 
+                      else { setCookie('brightness', 'dark', 365) }
+                      displayBrightness(getCookie('brightness'), e.target)
+                    }
+            }
+
+    </script>
+    <script src="https://unpkg.com/htmx.org@1.7.0" integrity="sha384-EzBXYPt0/T6gxNp0nuPtLkmRpmDBbjg6WmCUZRLXBBwYYmwAUxzlSGej0ARHX0Bo" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.1"></script>
+    <style>
+
+    :root {
+      --color-1: #F6E3C5;
+      --color-2: #A0D995;
+      --color-3: #6CC4A1;
+      --color-4: #4CACBC;
+    }
+
+    body {
+      font-family: sans-serif;
+      background: var(--color-1);
+      padding-left: 15%;
+      padding-right: 15%;
+    }
+
+    .flex-center {
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    header {
+      font-size: 3rem;
+      color: var(--color-4);
+    }
+
+    article {
+      background-color: var(--color-2);
+      padding: 1rem;
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+    }
+
+    article > header {
+      font-size: 2rem;
+      color: var(--color-4);
+      margin-bottom: .25rem;
+    }
+
+    @media only screen and (max-width: 480px) {
+      body {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      article > img {
+        display: none !important;
+      }
+
+      article > .gallery-placeholder {
+        display: none !important;
+      }
+    }
+
+    article > img {
+      width: 100%
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    nav > ol > li {
+      display: inline-block;
+      padding-right: 0.5rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    form > div {
+      margin-top: 1rem;
+    }
+
+    form > div > label {
+      font-size: 1.5rem;
+    }
+
+    form > div > input {
+      padding-top: .2rem;
+      padding-bottom: .2rem;
+      padding-left: .5rem;
+      padding-right: .5rem;
+    }
+
+    form > div > br {
+      margin-top: .2rem;
+    }
+
+    textarea {
+      width: 30rem;
+      padding-top: .2rem;
+      padding-bottom: .2rem;
+      padding-left: .5rem;
+      padding-right: .5rem;
+    }
+
+    button {
+      margin-top: .5rem;
+      padding-top: .2rem;
+      padding-bottom: .2rem;
+      padding-left: .5rem;
+      padding-right: .5rem;
+    }
+
+    .font-flex-center {
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .htmx-indicator {
+      display:none
+    }
+
+    </style>
+
+  </head>
+  <body>
+    <nav>
+      <ol>
+        <li id="brightness-toggle">☀️</li>
+        <li><a href="/">Home</a></li>
+      </ol>
+    </nav>
+    <main>
+      <header>Contact</header>
+      <hr>
+      <section>
+        <form hx-post="https://4wzwzawrx77gek3moxtpqfc2fa0jpadg.lambda-url.us-east-2.on.aws/"  
+              hx-target="this"
+              hx-swap="outerHTML"> 
+          <div>
+            <label  for="name">Name</label>
+            <br>
+            <input type="text" name="name" placeholder="Pat Doe" required/>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <br>
+            <input type="email" name="email" placeholder="pat@email.com" required/>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <br>
+            <textarea rows="3" name="message" placeholder="I'm looking for a quote on my project..." required></textarea>
+          </div>
+          <button
+              type="submit"
+              _="on click toggle @disabled until htmx:afterOnLoad">
+            <!-- <div class="flex justify-center items-center"> -->
+              <div class="mr-3">Send Message</div>
+              <img 
+                   class="htmx-indicator w-25" 
+                   src="https://s3.us-east-2.amazonaws.com/www.tosti.consulting/img/svg-loaders/tail-spin.svg">
+            <!-- </div> -->
+          </button>
+          </form>
+      </section>
+    </main>
+  </body>
+</html>
+
+

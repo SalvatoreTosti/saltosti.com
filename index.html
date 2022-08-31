@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
       function setCookie(name, value, days) {
-          var expires = "";
-          if (days) {
-              var date = new Date();
-              date.setTime(date.getTime() + (days*24*60*60*1000));
-              expires = "; expires=" + date.toUTCString();
-          }
-          document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-      }
+              var expires = "";
+              if (days) {
+                      var date = new Date();
+                      date.setTime(date.getTime() + (days*24*60*60*1000));
+                      expires = "; expires=" + date.toUTCString();
+                    }
+              document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+            }
 
       function getCookie(name) {
-          var nameEQ = name + "=";
-          var ca = document.cookie.split(';');
-          for(var i=0;i < ca.length;i++) {
-              var c = ca[i];
-              while (c.charAt(0)==' ') c = c.substring(1,c.length);
-              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-          }
-          return null;
-      }
+              var nameEQ = name + "=";
+              var ca = document.cookie.split(';');
+              for(var i=0;i < ca.length;i++) {
+                      var c = ca[i];
+                      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                    }
+              return null;
+            }
 
       function eraseCookie(name) {   
               document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -83,61 +83,49 @@
             }
 
       function displayBrightness(brightness, target){
-        if(brightness == 'dark'){ 
-          let root = document.styleSheets[0].rules[0];
-          root.style.setProperty('--color-1', '#4CACBC');
-          root.style.setProperty('--color-2', '#6CC4A1');
-          root.style.setProperty('--color-3', '#A0D995');
-          root.style.setProperty('--color-4', '#F6E3C5');
+              if(brightness == 'dark'){ 
+                      let root = document.styleSheets[0].rules[0];
+                      root.style.setProperty('--color-1', '#4CACBC');
+                      root.style.setProperty('--color-2', '#6CC4A1');
+                      root.style.setProperty('--color-3', '#A0D995');
+                      root.style.setProperty('--color-4', '#F6E3C5');
 
-          target.innerHTML = '☀️'
-        } else {
-          let root = document.styleSheets[0].rules[0];
-          root.style.setProperty('--color-1', '#F6E3C5');
-          root.style.setProperty('--color-2', '#A0D995');
-          root.style.setProperty('--color-3', '#6CC4A1');
-          root.style.setProperty('--color-4', '#4CACBC');
-          target.innerHTML = '🌒'
-        }
-      }
+                      target.innerHTML = '☀️'
+                    } else {
+                            let root = document.styleSheets[0].rules[0];
+                            root.style.setProperty('--color-1', '#F6E3C5');
+                            root.style.setProperty('--color-2', '#A0D995');
+                            root.style.setProperty('--color-3', '#6CC4A1');
+                            root.style.setProperty('--color-4', '#4CACBC');
+                            target.innerHTML = '🌒'
+                          }
+            }
 
       window.onload = function() {
-        reloadHexTiles()
-        for(x of document.getElementsByClassName('hex-reload')){
-          x.onclick = function(){ reloadHexTiles() }
-        }
-        displayBrightness(getCookie('brightness'), document.getElementById('brightness-toggle'))
+              reloadHexTiles()
+              for(x of document.getElementsByClassName('hex-reload')){
+                      x.onclick = function(){ reloadHexTiles() }
+                    }
+              displayBrightness(getCookie('brightness'), document.getElementById('brightness-toggle'))
 
-        document.getElementById('brightness-toggle').onclick = function(e){
-          let brightness = getCookie('brightness')
-          if(brightness == 'dark'){ eraseCookie('brightness') } 
-          else { setCookie('brightness', 'dark', 365) }
-          displayBrightness(getCookie('brightness'), e.target)
-        }
+              document.getElementById('brightness-toggle').onclick = function(e){
+                      let brightness = getCookie('brightness')
+                      if(brightness == 'dark'){ eraseCookie('brightness') } 
+              else { setCookie('brightness', 'dark', 365) }
+              displayBrightness(getCookie('brightness'), e.target)
+            }
       }
 
 
     </script>
-  </head>
-  <style>
+    <style>
 
     :root {
-      /*
-      --color-1: #F8ECD1;
-      --color-2: #DEB6AB;
-      --color-3: #AC7D88;
-      --color-4: #85586F;
-       */
 
-      /* --color-1: #4CACBC;
-          --color-2: #6CC4A1;
-          --color-3: #A0D995;
-          --color-4: #F6E3C5; */
-
-          --color-1: #F6E3C5;
-          --color-2: #A0D995;
-          --color-3: #6CC4A1;
-          --color-4: #4CACBC;
+      --color-1: #F6E3C5;
+      --color-2: #A0D995;
+      --color-3: #6CC4A1;
+      --color-4: #4CACBC;
     }
 
     body {
@@ -303,7 +291,8 @@
     }
 
 
-  </style>
+    </style>
+  </head>
   <body>
     <nav>
       <ol>
@@ -335,7 +324,7 @@
       <section>
         <strong><em>high performance, budget concious</em></strong>
         <p>If you're looking to realize your dream app or just take an excel spreadsheet to the next level, I can help! I specialize in delivering full-stack web applications with mobile-friendly frontends and reliable backends. I've worked with clients of all sizes to deliver internal and external facing web applications.</p>
-        <p><a href="">Request a quote</a><p>
+        <p><a href="contact">Request a quote</a><p>
       </section>
 
       <header>Gallery</header>
