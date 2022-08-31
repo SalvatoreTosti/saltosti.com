@@ -166,6 +166,7 @@
     }
 
     button {
+      vertical-align: top;
       margin-top: .5rem;
       padding-top: .2rem;
       padding-bottom: .2rem;
@@ -177,10 +178,6 @@
       display:flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .htmx-indicator {
-      display:none
     }
 
     </style>
@@ -215,16 +212,10 @@
             <br>
             <textarea rows="3" name="message" placeholder="I'm looking for a quote on my project..." required></textarea>
           </div>
-          <button
-              type="submit"
-              _="on click toggle @disabled until htmx:afterOnLoad">
-            <!-- <div class="flex justify-center items-center"> -->
-              <div class="mr-3">Send Message</div>
-              <img 
-                   class="htmx-indicator w-25" 
-                   src="https://s3.us-east-2.amazonaws.com/www.tosti.consulting/img/svg-loaders/tail-spin.svg">
-            <!-- </div> -->
-          </button>
+          <div>
+            <button type="submit">Send Message</button>
+              <img class="htmx-indicator" src="https://s3.us-east-2.amazonaws.com/www.tosti.consulting/img/svg-loaders/tail-spin.svg">
+          </div>
           </form>
       </section>
     </main>
