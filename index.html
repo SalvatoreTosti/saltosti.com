@@ -228,6 +228,10 @@
       color: var(--color-4);
     }
 
+    main > header {
+      margin-top: 2rem;
+    }
+
     .gallery-container {
       display: grid; 
       grid-template-columns: 1fr 1fr 1fr; 
@@ -332,6 +336,27 @@
       <header>Gallery</header>
       <hr>
       <section class="gallery-container">
+
+        <article>
+          <header>
+            <a href="https://www.runic64.com">Runic 64</a>
+          </header>
+          <section>
+            <em>Dungeon-crawling adventure on the N64!</em>
+            <p>
+            A fast-paced, button mashing, coin collecting dungeon crawler for the N64. 
+            Learn more at <a href="https://www.runic64.com" target="_blank">www.runic64.com</a>
+            </p>
+
+            <ul class="technologies-list">
+              <li>
+                <a href="https://github.com/DragonMinded/libdragon" target="_">Libdragon</a>
+              </li>
+            </ul>
+          </section>
+          <img src="static/images/runic.png" alt="A battle screen for a video game that uses a pixel art to show a fight with a zombie and two flying skeletons.">
+        </article>
+
 
         <article>
           <header>
@@ -450,22 +475,6 @@
             </ul>
           </section>
           <img src="https://s3.amazonaws.com/www.saltosti.com/img/orange-slice.png" alt="A pixelated orange slice">
-        </article>
-
-        <article>
-          <header>
-            <a href="https://github.com/SalvatoreTosti/spicy-bingo">Spicy Bingo</a>
-          </header>
-          <section>
-            <em>A real-time, multiplayer bingo app</em>
-            <p>Supports real-time bingo alerts between sessions, URL-based game sessions and Cache-based player ID persistence.</p>
-            <ul class="technologies-list">
-              <li><a href="https://www.python.org/">Python</a></li>
-              <li><a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a></li>
-              <li><a href="https://socket.io/">socket.io</a></li>
-            </ul>
-          </section>
-          <img src="https://s3.amazonaws.com/www.saltosti.com/img/spicy-bingo-sm.webp" alt="A bingo game being played in the Spicy Bingo app">
         </article>
       </section>
 
