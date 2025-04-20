@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Clock</title>
+    <meta name="Clock" content="Year clock">
+    <meta name="description" content="A clock which displays progress through the current year">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏱</text></svg>">
+    <script>
+      window.onload = function() {
+
+              function daysInYear(year) {
+                      return ((year % 4 === 0 && year % 100 > 0) || year %400 == 0) ? 366 : 365;
+                    }
+
+              let clock = document.getElementById( "clock" );
+              let now = new Date();
+              let yearStart = new Date(new Date().getFullYear(), 0, 1);
+              let daysAtYearStart = Math.floor(yearStart/8.64e7);
+              let fullDaysSinceEpoch = Math.floor(now/8.64e7);
+              let elapsedDays = fullDaysSinceEpoch - daysAtYearStart;
+              let percentage = elapsedDays / daysInYear(now.getYear()) * 100;
+              clock.style.background = `conic-gradient(black ${percentage}%, white ${percentage}%, white 100%)`;
+
+              let daysElement = document.getElementById( "days" );
+              daysElement.innerText = elapsedDays;
+            }
+
+
+    </script>
+  </head>
+  <body>
+    <main style="display:flex; align-items:center; justify-content:center; margin-top: 10em;">
+      <div>
+        <figcaption id="days" style="text-align:center; font-size: 8em; font-family: sans-serif;">
+        </figcaption>
+        <figure id="clock" 
+                style="width: 20em;
+                       height: 20em;
+                       border-radius: 50%"></figure>
+        <div style="width:100%; text-align:center;">
+          <a href="https://days.cblgh.org/" >Inpired by https://days.cblgh.org/</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+
