@@ -34,501 +34,444 @@
               document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
             }
 
-      function reloadHexTiles(){
-              let items = [
-                      {"href" : "https://www.youtube.com/watch?v=IW3kW6dHhd8", "symbol" : "🎶"},
-                      {"href" : "https://en.wikipedia.org/wiki/The_Mythical_Man-Month", "symbol" : "🏛️"},
-                      {"href" : "https://en.wikipedia.org/wiki/Lisp_(programming_language)", "symbol" : "☯️"},
-                      {"href" : "https://clojure.org/", "symbol" : "🧙"},
-                      {"href" : "https://www.python.org/", "symbol" : "🐍"},
-                      {"href" : "https://palletsprojects.com/p/flask/", "symbol" : "⚗️"},
-                      {"href" : "https://www.youtube.com/watch?v=1mCO440DjnM", "symbol" : "🌌"},
-                      {"href" : "https://www.youtube.com/watch?v=nz7AoR-hMjo", "symbol" : "🪐"},
-                      {"href" : "https://www.gbstudio.dev/", "symbol" : "🕹️"},
-                      {"href" : "https://www.heroku.com/home", "symbol" : "🚀"},
-                      {"href" : "http://pespmc1.vub.ac.be/REQVAR.html", "symbol" : "🌀"},
-                      {"href" : "https://www.youtube.com/watch?v=b7bkhophqwE", "symbol" : "🛹"},
-                      {"href" : "https://upload.wikimedia.org/wikipedia/commons/b/b7/Black_Knight_Satellite_%28cropped%29.jpg", "symbol" : "🛰️"},
-                      {"href" : "https://thenightmonitor.bandcamp.com/track/raven-in-tomb-land", "symbol" : "🛸"},
-                      {"href" : "https://www.youtube.com/watch?v=sG3PWet8fDk", "symbol" : "📇"},
-                      {"href" : "https://www.youtube.com/watch?v=4cK2MPgAHRk", "symbol" : "📺"},
-                      {"href" : "https://www.youtube.com/watch?v=hkWoyqkVwvw", "symbol" : "🌓"},
-                      {"href" : "https://soundcloud.com/dj-mastercard/bell-track-18", "symbol" : "🔔"},
-                      {"href" : "https://en.wikipedia.org/wiki/Long-term_nuclear_waste_warning_messages", "symbol" : "⏱️"},
-                      {"href" : "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-lowtech-website.html", "symbol" : "💡"},
-                      {"href" : "https://www.youtube.com/watch?v=S71axpgmvyo", "symbol" : "🌳"},
-                      {"href" : "https://youtu.be/0cjli_oQC-s?feature=shared&t=820", "symbol" : "👟"},
-                      {"href" : "https://www.everystem.com/", "symbol" : "🌱"},
-                      {"href" : "https://en.wikipedia.org/wiki/Hawthorne_effect", "symbol" : "🔎" },
-                      {"href" : "https://www.youtube.com/watch?v=enfPVQO8yEI", "symbol" : "💭"},
-                      {"href" : "https://www.youtube.com/watch?v=JFMWRv4sAOw", "symbol" : "🌸"}
-                    ]
-
-              items = items 
-                .map(value => ({ value, sort: Math.random() }))
-                .sort((a, b) => a.sort - b.sort)
-                .map(({ value }) => value)
-              items = items.slice(0, 6);
-
-              let hex = document.querySelector("#hex")
-              hex.innerHTML = '';
-
-              for(item of items){
-                      let x = document.createElement('a')
-                      x.setAttribute('href', item['href'])
-                      x.setAttribute('target','_')
-                      x.append(item['symbol'])
-                      x.classList.add('flex-center')
-                      hex.append(x)
-                    }
-              let img = document.createElement('img')
-              img.classList.add('hex-reload')
-              img.setAttribute('src', 'https://s3.amazonaws.com/www.saltosti.com/img/lake-chair-sm.webp')
-              img.setAttribute('alt', 'Salvatore Tosti sitting in a lake chair')
-              img.onclick = function(){ reloadHexTiles() }
-
-
-              let x = hex.children[1]
-              hex.insertBefore(img, x)
-            }
-
       function displayBrightness(brightness, target){
-              if(brightness == 'dark'){ 
-                      let root = document.styleSheets[0].rules[0];
-                      root.style.setProperty('--color-1', '#4CACBC');
-                      root.style.setProperty('--color-2', '#6CC4A1');
-                      root.style.setProperty('--color-3', '#A0D995');
-                      root.style.setProperty('--color-4', '#F6E3C5');
-
-                      target.innerHTML = '☀️'
-                    } else {
-                            let root = document.styleSheets[0].rules[0];
-                            root.style.setProperty('--color-1', '#F6E3C5');
-                            root.style.setProperty('--color-2', '#A0D995');
-                            root.style.setProperty('--color-3', '#6CC4A1');
-                            root.style.setProperty('--color-4', '#4CACBC');
-                            target.innerHTML = '🌒'
-                          }
-            }
-
-      window.onload = function() {
-              reloadHexTiles()
-              for(x of document.getElementsByClassName('hex-reload')){
-                      x.onclick = function(){ reloadHexTiles() }
-                    }
-              displayBrightness(getCookie('brightness'), document.getElementById('brightness-toggle'))
-
-              document.getElementById('brightness-toggle').onclick = function(e){
-                      let brightness = getCookie('brightness')
-                      if(brightness == 'dark'){ eraseCookie('brightness') } 
-              else { setCookie('brightness', 'dark', 365) }
-              displayBrightness(getCookie('brightness'), e.target)
-            }
+        if(brightness == 'dark'){ 
+          let root = document.styleSheets[0].rules[0];
+          root.style.setProperty('--bg-main', 'var(--sol-base02)');
+          root.style.setProperty('--bg-main-dot', 'var(--sol-base0)');
+          root.style.setProperty('--outline', 'var(--sol-base00)');
+          root.style.setProperty('--font-main', 'var(--sol-base00)');
+          target.innerHTML = '☀️'
+        } else {
+          let root = document.styleSheets[0].rules[0];
+          root.style.setProperty('--bg-main', 'var(--sol-base2)');
+          root.style.setProperty('--bg-main-dot', 'var(--sol-base1)');
+          root.style.setProperty('--outline', 'var(--sol-base0)');
+          root.style.setProperty('--font-main', 'var(--sol-base0)');
+          target.innerHTML = '🌒'
+        }
       }
 
+      window.onload = function() {
+        displayBrightness(getCookie('brightness'), document.getElementById('brightness-toggle'))
 
+        document.getElementById('brightness-toggle').onclick = function(e){
+          let brightness = getCookie('brightness')
+          if(brightness == 'dark'){ 
+            eraseCookie('brightness') 
+          } else { 
+            setCookie('brightness', 'dark', 365) 
+          }
+          displayBrightness(getCookie('brightness'), e.target)
+        }
+
+        Array.from(document.getElementsByClassName('swatch-button')).forEach(
+          function(e){
+            e.onclick = function(_){
+              let root = document.styleSheets[0].rules[0];
+              let color = e.getAttribute('color');
+              root.style.setProperty('--bg-primary', 'var(' + color + ')');
+            }
+          }
+        );
+
+      }
     </script>
     <style>
 
     :root {
+      --sol-base03: #002b36; /* brblack */
+      --sol-base02: #073642; /* black */
+      --sol-base01: #586e75; /* brgreen */
+      --sol-base00: #657b83; /* bryellow */
+      --sol-base0:  #839496; /* brblue */
+      --sol-base1:  #93a1a1; /* brcyan */
+      --sol-base2:  #eee8d5; /* white */
+      --sol-base3:  #fdf6e3; /* brwhite */
+      --sol-yellow: #b58900; /* yellow */
+      --sol-orange: #cb4b16; /* brred */
+      --sol-red:    #dc322f; /* red */
+      --sol-magenta: #d33682;/*  magenta */
+      --sol-violet: #6c71c4; /* brmagenta */
+      --sol-blue:   #268bd2; /* blue */
+      --sol-cyan:   #2aa198; /* cyan */
+      --sol-green:  #859900; /* green */
 
-      --color-1: #F6E3C5;
-      --color-2: #A0D995;
-      --color-3: #6CC4A1;
-      --color-4: #4CACBC;
+      --bg-main: var(--sol-base2);
+      --bg-main-dot: var(--sol-base1);
+      --bg-primary: var(--sol-orange);
+      --outline: var(--sol-base0);
+      --font-main: var(--sol-base0);
+    }
+
+    /* CSS reset */
+    *:not(dialog) {
+      margin: 0;
+    }
+
+    .d-flex {
+      display:flex;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    #brightness-toggle {
+      background-color: transparent;
+      border: none;
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
+    .swatch-button {
+      border: none;
+      height: 1.5rem;
+      width: 1.5rem;
+      margin-left: 0.5rem;
+    }
+
+    .swatch-button:hover {
+      filter: brightness(85%);
+    }
+
+    .swatch-button:active {
+      filter: brightness(105%);
+    }
+
+    .flex-space-between {
+      justify-content: space-between;
+    }
+
+    html {
+      overscroll-behavior: none;
+
+     --s: 1.5rem; /* control the overall size */
+     --r: 0.025rem;  /* control the radius of the circles */
+     --b: var(--bg-main); /* the background color */
+     --c: var(--bg-main-dot); /* the dot color */
+
+     background: 
+      conic-gradient(#0000 75%,var(--b) 0)
+       0 0/calc(2*var(--s)) calc(2*var(--s)),
+      radial-gradient(var(--c) var(--r),var(--b) calc(var(--r) + 1px))
+       0 0/var(--s) var(--s);
     }
 
     body {
       font-family: sans-serif;
-      background: var(--color-1);
-      padding-left: 15%;
-      padding-right: 15%;
+      line-height: 1.5;
+      padding-left: 25%;
+      padding-right: 25%;
     }
 
-    .hex-container {
-      margin: 0;
-      display: grid;
-      place-content: center;
+    nav {
+      padding-top: 0.5rem;
     }
 
-    .hex {
-      --s: 170px; /* control the size */
-      --g: 12px;  /* control the gap */
-      display: grid;
-      margin: calc(var(--s) + var(--g));
-    }
-
-    .hex > img {
-      grid-area: 1/1;
-      width: var(--s);
-      aspect-ratio: 1.15;
-      object-fit: cover;
-      clip-path: polygon(25% 0%, 75% 0%, 100% 50%,75% 100%,25% 100%,0 50%);
-      transform: translate(var(--_x,0),var(--_y,0)) scale(var(--_t,1));
-      cursor: pointer;
-      transition: .2s linear;
-    }
-    .hex > img:hover {
-      z-index: 1;
-      --_t: 1.2;
-    }
-
-    .hex > img:nth-child(1) {--_y: calc(-100% - var(--g))}
-    .hex > img:nth-child(7) {--_y: calc( 100% + var(--g))}
-    .hex > img:nth-child(3),
-    .hex > img:nth-child(5) {--_x: calc(-75% - .87*var(--g))}
-    .hex > img:nth-child(4),
-    .hex > img:nth-child(6) {--_x: calc( 75% + .87*var(--g))}
-    .hex > img:nth-child(3),
-    .hex > img:nth-child(4) {--_y: calc(-50% - .5*var(--g))}
-    .hex > img:nth-child(5), 
-    .hex > img:nth-child(6) {--_y: calc( 50% + .5*var(--g))}
-
-    .hex > a {
-      grid-area: 1/1;
-      width: var(--s);
-      aspect-ratio: 1.15;
-      object-fit: cover;
-      clip-path: polygon(25% 0%, 75% 0%, 100% 50%,75% 100%,25% 100%,0 50%);
-      transform: translate(var(--_x,0),var(--_y,0)) scale(var(--_t,1));
-      background: var(--color-2);
-      cursor: pointer;
-      filter: grayscale(80%);
-      transition: .2s linear;
-    }
-    .hex > a:hover {
-      filter: grayscale(0);
-      z-index: 1;
-      --_t: 1.2;
-    }
-
-    .hex > a:nth-child(1) {--_y: calc(-100% - var(--g))}
-    .hex > a:nth-child(7) {--_y: calc( 100% + var(--g))}
-    .hex > a:nth-child(3),
-    .hex > a:nth-child(5) {--_x: calc(-75% - .87*var(--g))}
-    .hex > a:nth-child(4),
-    .hex > a:nth-child(6) {--_x: calc( 75% + .87*var(--g))}
-    .hex > a:nth-child(3),
-    .hex > a:nth-child(4) {--_y: calc(-50% - .5*var(--g))}
-    .hex > a:nth-child(5), 
-    .hex > a:nth-child(6) {--_y: calc( 50% + .5*var(--g))}
-
-    .flex-center {
-      display:flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 50px;
-    }
-    .center {
-      text-align: center;
-    }
-
-    header {
-      font-size: 3rem;
-      color: var(--color-4);
-    }
-
-    main > header {
-      margin-top: 2rem;
-    }
-
-    .gallery-container {
-      display: grid; 
-      grid-template-columns: 1fr 1fr 1fr; 
-      grid-template-rows: 1fr 1fr 1fr; 
-      gap: 0.5em 0.5em; 
-    }
-
-    article {
-      background-color: var(--color-2);
-      padding: 1rem;
-      margin-top: .5rem;
-      margin-bottom: .5rem;
-      border-radius: 1rem;
-    }
-
-    article > header {
-      font-size: 2rem;
-      color: var(--color-4);
-      margin-bottom: .25rem;
+    article img {
+      width: 100%;
+      object-fit: contain;
+      border-radius: 0.5rem;
     }
 
     @media only screen and (max-width: 1024px) {
+      html {
+        background: var(--bg-main);
+      }
+
       body {
         padding-left: 5%;
         padding-right: 5%;
       }
 
-      article > img {
+      article img {
         display: none !important;
-      }
-
-      article > .gallery-placeholder {
-        display: none !important;
-      }
-
-      .gallery-container {
-        display: block;
-      }
-
-      .hex {
-        --s: 135px; /* control the size */
-        --g: 10px;  /* control the gap */
-        display: grid;
-        margin: calc(var(--s) + var(--g));
       }
     }
 
-    article > img {
-      width: 100%;
+    article > ul {
+      display: inline;
+    }
+
+    details > summary {
+      cursor: pointer;
     }
 
     p {
       font-size: 1.2rem;
     }
 
-    .gallery-placeholder {
-      cursor: default;
-      width: 100%;
-      height: 15rem;
-      background-color: var(--color-4); 
-      color: var(--color-1);
-      display:flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10rem;
-      border-radius: 1rem;
+    a {
+      color: var(--sol-blue);
     }
 
-    nav > ol > li {
-      display: inline-block;
-      padding-right: 0.5rem;
-      cursor: pointer;
-      font-size: 1.5rem;
+    a:visited {
+      color: var(--sol-violet);
     }
 
+    #content {
+      background: var(--bg-main);
+    }
+    
+    main {
+      padding-bottom: 1rem;
+    }
 
+    main > header {
+      font-size: 3rem;
+      margin-top: 1rem;
+      color: var(--sol-base2);
+      background-color: var(--bg-primary);
+      padding: 0.5rem;
+    }
+
+    section {
+      color: var(--font-main);
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    article {
+      padding: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border: 1px;
+      border-style: solid;
+      border-color: var(--outline);
+    }
+
+    article  header {
+      font-size: 2rem;
+      color: var(--bg-primary);
+    }
     </style>
   </head>
   <body>
-    <nav>
-      <ol>
-        <li id="brightness-toggle">☀️</li>
-      </ol>
-    </nav>
-    <div class="hex-container">
-      <div id="hex" class="hex">
-        <a></a>
-        <a></a>
-        <a></a>
-        <a></a>
-        <a></a>
-        <a></a>
-        <a></a>
-      </div>
-    </div>
+    <div id="content">
+      <nav class="d-flex flex-space-between">
+        <button id="brightness-toggle">☀️</button>
+        <div>
+          <button style="background-color: var(--sol-yellow);" color="--sol-yellow" class="swatch-button"></button>
+          <button style="background-color: var(--sol-orange);" color="--sol-orange" class="swatch-button"></button>
+          <button style="background-color: var(--sol-red);" color="--sol-red" class="swatch-button"></button>
+          <button style="background-color: var(--sol-magenta);" color="--sol-magenta" class="swatch-button"></button>
+          <button style="background-color: var(--sol-violet);" color="--sol-violet" class="swatch-button"></button>
+          <button style="background-color: var(--sol-blue);" color="--sol-blue" class="swatch-button"></button>
+          <button style="background-color: var(--sol-cyan);" color="--sol-cyan" class="swatch-button"></button>
+          <button style="background-color: var(--sol-green);" color="--sol-green" class="swatch-button"></button>
+        </div>
+      </nav>
+      <main>
+        <header>Salvatore Tosti</header>
+        <section>
+          <p>I'm a software engineering professional with a background  in functional programming. I've worked in a variety of languages including Clojure λ, Python 🐍 and vanilla JS 🍦. In my free time, I enjoy programming games and listening to records.
+          </p>
+        </section>
 
-    <main>
-      <header>Salvatore Tosti</header>
-      <hr>
-      <section>
-        <p>I'm passionate about software engineering and functional programming. I work in a variety of languages including Clojure λ and Python 🐍. In my free time, I make linoleum prints and program games. I'm interested in low-cost websites using techonolgies like HTMX, AWS Lambda and Clojure.
-        </p>
-      </section>
-
-      <header>Gallery</header>
-      <hr>
-      <section class="gallery-container">
-
-        <article>
-          <header>
-            <a href="https://www.vanillastack.tools">vanillastack.tools</a>
-          </header>
-          <section>
-            <em>A simpler web</em>
+        <header>Projects</header>
+        <section>
+          <article>
+            <header>vanillastack.tools</header>
+            <em><a href="https://www.vanillastack.tools" target="_blank">A simpler web</a></em>
             <p>
-            A compilation of tools and techniques for building websites. 
-            Learn more at <a href="https://www.vanillastack.tools" target="_blank">https://www.vanillastack.tools</a>
+            A compilation of tools and techniques for building websites with core browser features.
             </p>
+            <details>
+              <summary>technologies</summary>
+              <ul>
+                <li>
+                  HTML
+                </li>
+                <li>
+                  CSS
+                </li>
+                <li>
+                  Javascript
+                </li>
+              </ul>
+            </details>
+          </article>
 
-            <ul class="technologies-list">
-              <li>
-                HTML
-              </li>
-              <li>
-                CSS
-              </li>
-              <li>
-                Javascript
-              </li>
-            </ul>
-          </section>
-          <div class="gallery-placeholder">🍦</div>
-        </article>
+          <article>
+            <div class="d-flex">
+              <div>
+                <header>Runic 64</header>
+                <em><a href="https://www.runic64.com" target="_blank">Dungeon-crawling adventure on the N64!</a></em>
+                <p>
+                A fast-paced, button mashing, coin collecting dungeon crawler for the N64. </p>
+                <details>
+                  <summary>technologies</summary>
+                  <ul>
+                    <li>C-lang</li>
+                    <li>
+                      <a href="https://github.com/DragonMinded/libdragon" target="_">Libdragon</a>
+                    </li>
+                  </ul>
+                </details>
+              </div>
 
+              <img src="static/images/runic.png" alt="A battle screen for a video game that uses a pixel art to show a fight with a zombie and two flying skeletons.">
+            </div>
+          </article>
 
-        <article>
-          <header>
-            <a href="https://www.runic64.com">Runic 64</a>
-          </header>
-          <section>
-            <em>Dungeon-crawling adventure on the N64!</em>
-            <p>
-            A fast-paced, button mashing, coin collecting dungeon crawler for the N64. 
-            Learn more at <a href="https://www.runic64.com" target="_blank">www.runic64.com</a>
-            </p>
+          <article>
+            <div class="d-flex">
+              <div>
+                <header>Meadow GB</header>
+                <em><a href="https://www.meadow.fun" target="_blank">A farming adventure on the go!</a></em>
+                <p>A farming simulator inspired by Harvest Moon, written for the Game Boy.  Learn more at </p>
 
-            <ul class="technologies-list">
-              <li>
-                <a href="https://github.com/DragonMinded/libdragon" target="_">Libdragon</a>
-              </li>
-            </ul>
-          </section>
-          <img src="static/images/runic.png" alt="A battle screen for a video game that uses a pixel art to show a fight with a zombie and two flying skeletons.">
-        </article>
+                <details>
+                  <summary>technologies</summary>
+                  <ul>
+                    <li><a href="https://www.gbstudio.dev/" target="_">GB Studio</a></li>
+                  </ul>
+                </details>
+              </div>
+              <img src="static/images/meadow-title-screen.png" alt="Title screen for the game Meadow GB">
+            </div>
+          </article>
 
-
-        <article>
-          <header>
-            <a href="https://salvatoretosti.itch.io/meadow-gb">Meadow GB</a>
-          </header>
-          <section>
-            <em>A farming adventure on the go!</em>
-            <p>A farming simulator inspired by Harvest Moon, written for the Game Boy.  Learn more at <a href="https://www.meadow.fun" target="_blank">www.meadow.fun</a></p>
-            <ul class="technologies-list">
-              <li><a href="https://www.gbstudio.dev/" target="_">GB Studio</a></li>
-            </ul>
-          </section>
-          <img src="static/images/meadow-title-screen.png" alt="Title screen for the game Meadow GB">
-        </article>
-
-        <article>
-          <header>
-            <a href="https://github.com/SalvatoreTosti/htmx-lambda-url-example" target="_">HTMX via AWS Lambda URL</a>
-          </header>
-          <section>
-            <em>HTMX endpoints in under 5 minutes!</em>
+          <article>
+            <header>HTMX via AWS Lambda URL</header>
+            <em><a href="https://github.com/SalvatoreTosti/htmx-lambda-url-example" target="_">HTMX endpoints in under 5 minutes!</a></em>
             <p>A step-by-step guide for setting up publicly accssible HTMX endpoints using AWS Lambda URLs</p>
-            <ul class="technologies-list">
-              <li><a href="https://htmx.org/" target="_">HTMX</a></li>
-              <li><a href="https://aws.amazon.com/lambda/" target="_">AWS Lambda</a></li>
-            </ul>
-          </section>
-          <div class="gallery-placeholder">λ</div>
-        </article>
 
-        <article>
-          <header>
-            <a href="https://github.com/SalvatoreTosti/chaas">chaas</a>
-          </header>
-          <section>
-            <em>colorhunt.co as an API!</em>
+            <details>
+              <summary>technologies</summary>
+              <ul>
+                <li><a href="https://htmx.org/" target="_">HTMX</a></li>
+                <li><a href="https://aws.amazon.com/lambda/" target="_">AWS Lambda</a></li>
+              </ul>
+            </details>
+          </article>
+
+          <article>
+            <header>chaas</header>
+            <em><a href="https://github.com/SalvatoreTosti/chaas">colorhunt.co as an API!</a></em>
             <p>A REST API for accessing palettes on <a href="https://colorhunt.co" target="_">colorhunt.co</a></p>
-            <ul class="technologies-list">
-              <li><a href="https://clojure.org/" target="_">Clojure</a></li>
-              <li><a href="https://luminusweb.com/" target="_">luminus</a></li>
-              <li><a href="https://www.ctmx.info/" target="_">ctmx</a></li>
-            </ul>
-          </section>
-          <img src="https://s3.amazonaws.com/www.saltosti.com/img/chaas-sm.webp" alt="Home page of the chaas app showing a captured 4 color palette">
-        </article>
 
-        <article>
-          <header>
-            <a href="https://github.com/SalvatoreTosti/cljstyle.com">cljstyle.com</a>
-          </header>
-          <section>
-            <em>Clojure code formatting on the web!</em>
+            <details>
+              <summary>technologies</summary>
+              <ul>
+                <li><a href="https://clojure.org/" target="_">Clojure</a></li>
+                <li><a href="https://luminusweb.com/" target="_">luminus</a></li>
+                <li><a href="https://www.ctmx.info/" target="_">ctmx</a></li>
+              </ul>
+            </details>
+          </article>
+
+          <article>
+            <header>cljstyle.com</header>
+            <em><a href="https://github.com/SalvatoreTosti/cljstyle.com">Clojure code formatting on the web!</a></em>
             <p>A web-form for styling Clojure code using <a href="https://github.com/greglook/cljstyle">cljstyle</a></p>
-            <ul class="technologies-list">
-              <li><a href="https://clojure.org/">Clojure</a></li>
-              <li><a href="https://www.ctmx.info/">ctmx</a></li>
-            </ul>
-          </section>
-          <img src="https://s3.amazonaws.com/www.saltosti.com/img/cljstyle-sm.webp" alt="Home page of the cljstyle.com app">
-        </article>
 
-        <article>
-          <header>
-            <a href="https://github.com/atosti/coc">Circle of Competence</a>
-          </header>
-          <section>
-            <em>CLI tool for stock ticker analysis</em>
+            <details>
+              <summary>technologies</summary>
+              <ul>
+                <li><a href="https://clojure.org/">Clojure</a></li>
+                <li><a href="https://www.ctmx.info/">ctmx</a></li>
+              </ul>
+            </details>
+          </article>
+
+          <article>
+            <header>
+              Circle of Competence
+            </header>
+            <em>
+              <a href="https://github.com/atosti/coc">CLI tool for stock ticker analysis</a>
+            </em>
             <p>Scrapes data from financial websites and then performs algorithmic analysis to determine overall 'health' of a stock. Cooperative project with <a href="https://github.com/atosti">atosti</a></p>
-            <ul class="technologies-list">
-              <li><a href="https://www.python.org/">Python</a></li>
-              <li><a href="https://beautiful-soup-4.readthedocs.io/en/latest/#">Beautiful Soup</a></li>
-            </ul>
-          </section>
-          <img src="https://s3.amazonaws.com/www.saltosti.com/img/coc-sm.webp" alt="A list of calculated stock information shown in a terminal">
-        </article>
 
-        <article>
-          <header>
-            <a href="https://github.com/SalvatoreTosti/tetris-clj">tetris-clj</a>
-          </header>
-          <section>
-            <em>Tetris in Clojure!</em>
-            <p>Built to demonstrate game development using functional principles. Uses quil for graphics / input handling. Graphics by <a href="https://www.kenney.nl/assets/bit-pack">Kenny.nl</a></p>
-            <ul class="technologies-list">
-              <li><a href="https://clojure.org/">Clojure</a></li>
-              <li><a href="http://www.quil.info/">quil</a></li>
-            </ul>
-          </section>
-          <img src="https://raw.githubusercontent.com/SalvatoreTosti/tetris-clj/master/doc/tetris-2.png" alt="A game of tetris">
-        </article>
+            <details>
+              <summary>technologies</summary>
+              <ul>
+                <li><a href="https://www.python.org/">Python</a></li>
+                <li><a href="https://beautiful-soup-4.readthedocs.io/en/latest/#">Beautiful Soup</a></li>
+              </ul>
+            </details>
+          </article>
 
-        <article>
-          <header>
-            <a href="https://github.com/SalvatoreTosti/gloom">gloom</a>
-          </header>
-          <section>
-            <em>Dungeon-crawler built in Clojure</em>
-            <p>Based on Steve Losh's <a href="http://stevelosh.com/blog/2012/07/caves-of-clojure-01/">Caves of Clojure</a> articles. Uses quil for graphics / input handling. The game is currently a playable WIP. Graphics by <a href="https://www.kenney.nl/assets/bit-pack">Kenny.nl</a></p>
-            <ul class="technologies-list">
-              <li><a href="https://clojure.org/">Clojure</a></li>
-              <li><a href="http://www.quil.info/">quil</a></li>
-            </ul>
-          </section>
-          <img src="https://raw.githubusercontent.com/SalvatoreTosti/gloom/master/doc/mushrooms-512.png" alt="A cartoon image of two mushrooms">
-        </article>
+          <article>
+            <div class="d-flex">
+              <div>
+                <header>tetris-clj</header>
+                <em><a href="https://github.com/SalvatoreTosti/tetris-clj">Tetris in Clojure!</a></em>
+                <p>Built to demonstrate game development using functional principles. Uses quil for graphics / input handling. Graphics by <a href="https://www.kenney.nl/assets/bit-pack">Kenny.nl</a></p>
+                <details>
+                  <summary>technologies</summary>
+                  <ul>
+                    <li><a href="https://clojure.org/">Clojure</a></li>
+                    <li><a href="http://www.quil.info/">quil</a></li>
+                  </ul>
+                </details>
+              </div>
+              <img src="static/images/clj-tetris.png" alt="A game of tetris">
+            </div>
+          </article>
 
-        <article>
-          <header>
-            <a href="https://github.com/SalvatoreTosti/sprite-slice">Sprite Slice</a>
-          </header>
-          <section>
-            <em>A web-based spritesheet slicer</em>
-            <p>Slices large images into smaller square 'tiles'. The sliced tiles are named, compressed and sent them back to the user as a single file.</p>
-            <ul class="technologies-list">
-              <li><a href="https://clojure.org/">Clojure</a></li>
-            </ul>
-          </section>
-          <img src="https://s3.amazonaws.com/www.saltosti.com/img/orange-slice.png" alt="A pixelated orange slice">
-        </article>
-      </section>
+          <article>
+            <div class="d-flex">
+              <div>
+                <header>gloom</header>
+                <em><a href="https://github.com/SalvatoreTosti/gloom" target="_">Dungeon-crawler built in Clojure</a></em>
+                <p>Based on Steve Losh's <a href="http://stevelosh.com/blog/2012/07/caves-of-clojure-01/">Caves of Clojure</a> articles. Uses quil for graphics / input handling. The game is currently a playable WIP. Graphics by <a href="https://www.kenney.nl/assets/bit-pack">Kenny.nl</a></p>
 
-      <header>Contact</header>
-      <hr>
-      <section>
-        <ul>
-          <li><a href="https://github.com/SalvatoreTosti" target="_">Github</a></li>
-          <li><a href="https://www.fiverr.com/salvatoretosti" target="_">Fiverr</a></li>
-          <li><a href="https://www.linkedin.com/in/saltosti/" target="_">LinkedIn</a></li>
-          <li><a href="mailto:salvatore.tosti@pm.me">Email</a></li>
-        </ul>
-      </section>
+                <details>
+                  <summary>technologies</summary>
+                  <ul>
+                    <li><a href="https://clojure.org/">Clojure</a></li>
+                    <li><a href="http://www.quil.info/">quil</a></li>
+                  </ul>
+                </details>
 
-      <header>Inspirations</header>
-      <hr>
-      <section>
-        <ul>
-          <li><a href="https://solar.lowtechmagazine.com/">https://solar.lowtechmagazine.com/</a></li>
-          <li><a href="https://www.colorhunt.co/palette/f6e3c5a0d9956cc4a14cacbc">https://www.colorhunt.co/palette/f6e3c5a0d9956cc4a14cacbc</a></li>
-        </ul>
-      </section>
+              </div>
+              <img src="static/images/mushrooms-512.png" alt="A cartoon image of two mushrooms">
+            </div>
+          </article>
 
-    </main>
+          <article>
+            <div class="d-flex">
+              <div>
+                <header>Sprite Slice</header>
+                <em>
+                  <a href="https://github.com/SalvatoreTosti/sprite-slice" target="_">A web-based spritesheet slicer</a>
+                </em>
+                <p>Slices large images into smaller square 'tiles'. The sliced tiles are named, compressed and sent them back to the user as a single file.</p>
+                <details>
+                  <summary>technologies</summary>
+                  <ul>
+                    <li><a href="https://clojure.org/">Clojure</a></li>
+                  </ul>
+                </details>
+              </div>
+
+              <img src="static/images/orange-slice.png" alt="A pixelated orange slice">
+            </div>
+          </article>
+        </section>
+
+        <header>Contact</header>
+        <section>
+          <ul>
+            <li><a href="https://github.com/SalvatoreTosti" target="_">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/saltosti/" target="_">LinkedIn</a></li>
+            <li><a href="mailto:salvatore.tosti@pm.me">Email</a></li>
+          </ul>
+        </section>
+
+        <header>Inspirations</header>
+        <section>
+          <ul>
+            <li><a href="https://solar.lowtechmagazine.com/">https://solar.lowtechmagazine.com/</a></li>
+            <li><a href="https://ethanschoonover.com/solarized/">https://ethanschoonover.com/solarized/</a></li>
+          </ul>
+        </section>
+
+      </main>
+    </div>
   </body>
 </html>
 
