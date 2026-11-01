@@ -13,20 +13,19 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
-      - uses: aws-actions/configure-aws-credentials@b47578312673ae6fa5b5096b330d9fbac3d116df # v4.2.1
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: us-east-2
       - name: Sync website to S3
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-2
         run: >-
           aws s3 sync . "s3://${AWS_S3_BUCKET}"
+          --acl public-read
           --follow-symlinks
           --exclude '.git/*'
           --exclude '.github/*'
@@ -35,4 +34,6 @@ jobs:
       - name: Invalidate CloudFront
         env:
           DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CLOUDFRONT }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CLOUDFRONT }}
         run: aws cloudfront create-invalidation --region us-east-1 --distribution-id "$DISTRIBUTION" --paths '/*'

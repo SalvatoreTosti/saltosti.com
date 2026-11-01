@@ -4,13 +4,14 @@ A static site hosted on AWS S3
 ## Deployment
 
 The `main` branch deploys the repository to S3 and invalidates CloudFront. Configure
-these repository secrets:
+these existing repository secrets:
 
-- `AWS_ROLE_ARN`: IAM role trusted for GitHub Actions OIDC from this repository's
-  `main` branch. Grant it only S3 sync permissions for the website bucket and
-  `cloudfront:CreateInvalidation` for the site's distribution.
 - `AWS_S3_BUCKET`: website bucket name.
+- `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`: credentials for S3 upload.
 - `DISTRIBUTION`: CloudFront distribution ID.
+- `AWS_ACCESS_KEY_ID_CLOUDFRONT` and `AWS_SECRET_ACCESS_KEY_CLOUDFRONT`: credentials
+  for CloudFront invalidation.
 
-The bucket policy should provide public read access; the workflow does not set
-object ACLs.
+This workflow reuses the existing AWS credentials and resources; it does not
+require an OIDC role or other AWS setup. S3 object uploads retain the existing
+`public-read` ACL behavior.
